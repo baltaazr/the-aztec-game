@@ -1,0 +1,37 @@
+{
+  "1": {
+    "n": "2",
+    "e": "3",
+    "w": "6",
+    "items": []
+  },
+  "2": {
+    "n": "8 locked",
+    "s": "1",
+    "items": [],
+    "specialActions": "unlock"
+  },
+  "3": {
+    "n": "4",
+    "w": "1",
+    "items": []
+  },
+  "4": {
+    "s": "3",
+    "w": "5",
+    "items": [{ "type": "cash", "amt": 50 }]
+  },
+  "5": {
+    "e": "4",
+    "items": [{ "name": "key", "description": "key description" }]
+  },
+  "6": {
+    "w": "1",
+    "n": "7",
+    "items": []
+  },
+  "7": {
+    "s": "6",
+    "items": [{ "type": "cash", "amt": 50 }]
+  }
+}

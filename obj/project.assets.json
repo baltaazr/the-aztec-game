@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/baltazar/Documents/Projects/the-aztec-game/the-aztec-game.csproj",
+      "projectUniqueName": "/home/baltazar/Documents/Projects/hvgp/the-aztec-game/the-aztec-game.csproj",
       "projectName": "the-aztec-game",
-      "projectPath": "/home/baltazar/Documents/Projects/the-aztec-game/the-aztec-game.csproj",
+      "projectPath": "/home/baltazar/Documents/Projects/hvgp/the-aztec-game/the-aztec-game.csproj",
       "packagesPath": "/home/baltazar/.nuget/packages/",
-      "outputPath": "/home/baltazar/Documents/Projects/the-aztec-game/obj/",
+      "outputPath": "/home/baltazar/Documents/Projects/hvgp/the-aztec-game/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
