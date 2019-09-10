@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/baltazar/Documents/Projects/the-aztec-game/the-aztec-game.csproj": {}
+  },
+  "projects": {
+    "/home/baltazar/Documents/Projects/the-aztec-game/the-aztec-game.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/baltazar/Documents/Projects/the-aztec-game/the-aztec-game.csproj",
+        "projectName": "the-aztec-game",
+        "projectPath": "/home/baltazar/Documents/Projects/the-aztec-game/the-aztec-game.csproj",
+        "packagesPath": "/home/baltazar/.nuget/packages/",
+        "outputPath": "/home/baltazar/Documents/Projects/the-aztec-game/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/home/baltazar/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.2"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.2": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.2": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.2.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

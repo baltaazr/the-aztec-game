@@ -1,0 +1,11 @@
+/home/baltazar/Documents/Projects/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.deps.json
+/home/baltazar/Documents/Projects/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.runtimeconfig.json
+/home/baltazar/Documents/Projects/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.runtimeconfig.dev.json
+/home/baltazar/Documents/Projects/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.dll
+/home/baltazar/Documents/Projects/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.pdb
+/home/baltazar/Documents/Projects/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.csprojAssemblyReference.cache
+/home/baltazar/Documents/Projects/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.csproj.CoreCompileInputs.cache
+/home/baltazar/Documents/Projects/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.AssemblyInfoInputs.cache
+/home/baltazar/Documents/Projects/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.AssemblyInfo.cs
+/home/baltazar/Documents/Projects/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.dll
+/home/baltazar/Documents/Projects/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.pdb
