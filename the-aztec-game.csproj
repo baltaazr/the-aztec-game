@@ -6,4 +6,8 @@
     <RootNamespace>the_aztec_game</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
 </Project>
