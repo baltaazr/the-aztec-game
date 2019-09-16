@@ -28,11 +28,11 @@ namespace the_aztec_game
     public string getStats()
     {
       return string.Format(@"Current Stats:
-            Health: {0}
-            Strength: {1}
-            Speed: {2}
-            Courage: {3}
-            Luck: {4}", stats["hp"], stats["dmgmod"], stats["speed"], stats["courage"], stats["luck"]);
+  Health: {0}
+  Strength: {1}
+  Speed: {2}
+  Courage: {3}
+  Luck: {4}", stats["hp"], stats["dmgmod"], stats["speed"], stats["courage"], stats["luck"]);
     }
   }
 }
