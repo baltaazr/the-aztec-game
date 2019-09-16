@@ -158,7 +158,7 @@ realize you are in your bedroom– and it was all a dream. Or was it?");
 You look besides you, and pick up the phone with dread. It was Tony Accardo, the Big boss of {0}
 
    Tony : Do you have the money yet?               
-            ", player.name));
+", player.name));
       System.Threading.Thread.Sleep(3000);
       typewriterStyleOutput(@"         
 You : I - I’m getting it soon.");
@@ -267,7 +267,10 @@ for jungle exploration, from a place called Las cosas de Daniel.
             or
 
       2 : Ehhh… I don’ t need Daniel’s slimy tools.
-            ");
+");
+
+      string reply = waitForInput(new string[] { "1", "2" });
+
     }
 
     private void initTempleMap()
@@ -291,6 +294,16 @@ for jungle exploration, from a place called Las cosas de Daniel.
             }
           }
         }
+      }
+    }
+
+    private string waitForInput(string[] possibleAnswers)
+    {
+      while (true)
+      {
+        string input = Console.ReadLine();
+        if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
+        else Console.Write("That wasn't a valid choice.\n");
       }
     }
 
