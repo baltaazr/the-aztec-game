@@ -22,7 +22,9 @@ namespace the_aztec_game
 
       int characterPoints = 200;
 
-      typewriterStyleOutput("Character Points: 200\nCurrent Stats:\nHealth: 40\nStrength: 1\nSpeed: 5\nCourage: 0\nLuck: 40\nThere are four categories to place your character points: Health, damage, speed, courage, and luck\n");
+      typewriterStyleOutput(string.Format(@"Character Points: 200
+      {0}
+      There are four categories to place your character points: Health, damage, speed, courage, and luck"), player.getStats());
       typewriterStyleOutput("Every character point added to health adds 1 health point,\nhow many character points would you like to spend on health?: ");
       int cphp = Int32.Parse(Console.ReadLine());
       characterPoints -= cphp;
@@ -49,7 +51,7 @@ namespace the_aztec_game
       player.stats["luck"] += cpl * 0.5;
       player.stats["hp"] += characterPoints;
 
-      typewriterStyleOutput(player.displayStats());
+      typewriterStyleOutput(player.getStats());
       typewriterStyleOutput(string.Format("\nIt is the year 1952, you have convinced a private American company that goes by the name\n“Dart” to fund you for a trip to Mexico to investigate a mysterious aztec ruin that you saw in a\ndream. Despite being initially heasitant about going on this quest, you have been “convinced”\nby the Chicago mafia who want your payment. You hope that the money is enough to pay for\nyour studies while being a {0} and your debt to the Chicago Outfit, a well\nknown gang made by Al Capone.", player.occupation));
       typewriterStyleOutput("\n\nYour great idea started one early morning in Chicago:\n\nIt was just like any other morning as you walked down fifth street in your work clothes. Traffic\nblaring, and sky littered with puffs of clouds. Crowds of people in their suits and overcoats\nstroll past you as you make your way to work.\n\n");
       System.Threading.Thread.Sleep(100);
