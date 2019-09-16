@@ -31,35 +31,35 @@ There are four categories to place your character points: Health, Damage, Speed,
       typewriterStyleOutput(@"
 Every character point added to health adds 1 health point. 
 How many character points would you like to spend on health?: ");
-      int cphp = Int32.Parse(Console.ReadLine());
+      int cphp = waitForInt();
       characterPoints -= cphp;
       player.stats["hp"] += cphp;
 
       typewriterStyleOutput(@"
 Every character point added to strength adds 0.05 to the damage modifier. 
 How many character points would you like to spend on strength?: ");
-      int cpdm = Int32.Parse(Console.ReadLine());
+      int cpdm = waitForInt();
       characterPoints -= cpdm;
       player.stats["dmgmod"] += cpdm * 0.05;
 
       typewriterStyleOutput(@"
 Every character point added to speed increases the chance of attacking first by 1%. 
 How many character points would you like to spend on speed?: ");
-      int cps = Int32.Parse(Console.ReadLine());
+      int cps = waitForInt();
       characterPoints -= cps;
       player.stats["speed"] += cps;
 
       typewriterStyleOutput(@"
 Every character point added to courage increase the chance of dealing crits by 1%. 
 How many character points would you like to spend on courage?: ");
-      int cpc = Int32.Parse(Console.ReadLine());
+      int cpc = waitForInt();
       characterPoints -= cpc;
       player.stats["courage"] += cpc;
 
       typewriterStyleOutput(@"
 Every character point added to luck increases the chance of meeting a weaker enemy by 0.5%.
 How many character points would you like to spend on luck?: ");
-      int cpl = Int32.Parse(Console.ReadLine());
+      int cpl = waitForInt();
       characterPoints -= cpl;
       player.stats["luck"] += cpl * 0.5;
       player.stats["hp"] += characterPoints;
@@ -297,13 +297,34 @@ for jungle exploration, from a place called Las cosas de Daniel.
       }
     }
 
-    private string waitForInput(string[] possibleAnswers)
+    private string waitForInput(string[] possibleAnswers, string errorMessage = "That wasn't a valid choice.\n")
     {
       while (true)
       {
         string input = Console.ReadLine();
         if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
-        else Console.Write("That wasn't a valid choice.\n");
+        else typewriterStyleOutput(errorMessage);
+      }
+    }
+
+    private int waitForInt(string errorMessage = "Could not parse input. Please enter a valid integer: ")
+    {
+      while (true)
+      {
+        string input = Console.ReadLine();
+        int actualInt;
+
+        try
+        {
+          actualInt = Int32.Parse(input);
+        }
+        catch
+        {
+          typewriterStyleOutput(errorMessage);
+          continue;
+        }
+
+        return actualInt;
       }
     }
 
