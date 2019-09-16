@@ -1,3 +1,6 @@
+using System;
+
+
 namespace the_aztec_game
 {
     class Weapon : Item
@@ -8,6 +11,12 @@ namespace the_aztec_game
         public Weapon()
         {
 
+        }
+
+        public double getRandDmg()
+        {
+            Random r = new Random();
+            return (r.NextDouble() + 0.5) * dmg;
         }
     }
 }
