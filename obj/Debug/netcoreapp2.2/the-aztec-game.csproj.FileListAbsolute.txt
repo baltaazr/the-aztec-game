@@ -20,3 +20,14 @@
 /home/baltazar/Documents/Projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.AssemblyInfo.cs
 /home/baltazar/Documents/Projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.dll
 /home/baltazar/Documents/Projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.pdb
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.deps.json
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.runtimeconfig.json
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.runtimeconfig.dev.json
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.dll
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/bin/Debug/netcoreapp2.2/the-aztec-game.pdb
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.csprojAssemblyReference.cache
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.csproj.CoreCompileInputs.cache
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.AssemblyInfoInputs.cache
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.AssemblyInfo.cs
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.dll
+/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/Debug/netcoreapp2.2/the-aztec-game.pdb

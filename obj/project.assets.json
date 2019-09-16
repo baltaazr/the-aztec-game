@@ -726,23 +726,23 @@
     ]
   },
   "packageFolders": {
-    "/home/baltazar/.nuget/packages/": {},
+    "/home/owner/.nuget/packages/": {},
     "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/baltazar/Documents/Projects/hvgp/the-aztec-game/the-aztec-game.csproj",
+      "projectUniqueName": "/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/the-aztec-game.csproj",
       "projectName": "the-aztec-game",
-      "projectPath": "/home/baltazar/Documents/Projects/hvgp/the-aztec-game/the-aztec-game.csproj",
-      "packagesPath": "/home/baltazar/.nuget/packages/",
-      "outputPath": "/home/baltazar/Documents/Projects/hvgp/the-aztec-game/obj/",
+      "projectPath": "/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/the-aztec-game.csproj",
+      "packagesPath": "/home/owner/.nuget/packages/",
+      "outputPath": "/home/owner/Desktop/desktop/projects/hvgp/the-aztec-game/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/baltazar/.nuget/NuGet/NuGet.Config"
+        "/home/owner/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
