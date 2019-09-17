@@ -417,6 +417,20 @@ Because of your speed, you're able to escape successfully.
                     return;
                 }
             }
+            if (player.stats["hp"] <= 0)
+            {
+                typewriterStyleOutput(string.Format(@"
+
+You go unconscious, and you wake up shortly after. You realize you lost {0}.
+", player.cash > 2000 ? "2000 pesos" : "all your money"));
+                player.unconscious();
+            }
+            else
+            {
+                typewriterStyleOutput(@"
+
+You're able to kill the enemy. Good job.");
+            }
 
         }
 
@@ -474,7 +488,12 @@ You dealt {0} damage to the enemy. Not bad.
 
         private void enemyCombatTurn(ref Enemy enemy)
         {
+            double dmgDealt = enemy.getRandDmg();
+            player.stats["hp"] -= dmgDealt;
+            typewriterStyleOutput(string.Format(@"
 
+The enemy has dealt {0} damage on you, your health is now {1}.
+", dmgDealt, player.stats["hp"]));
         }
     }
 }
