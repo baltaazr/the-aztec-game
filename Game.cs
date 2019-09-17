@@ -315,8 +315,8 @@ You : My name is {0}, I want equipments for exploring the nearby ancient temple.
                 }
 
                 string reply = waitForInput(new string[] { "1", "2" });
-
-                typewriterStyleOutput(string.Format(@"
+            }
+            typewriterStyleOutput(string.Format(@"
 
 You are well equipped for this job, but now it’s time for you to gain your money and pay off
 your debt. You say goodbye to Juan Perez {0}and head to
@@ -324,19 +324,19 @@ your jeep. You close the car door and continue on your way into the jungle. With
 vague instructions Juan Perez has given you, you follow his directions.
 What were the direcitons?
 (Type N for North, S for South, etc. Add spacing between each direction)", store_choice == 1 ? "and Daniel" : ""));
-                while (!Console.ReadLine().Equals("N N E E S W"))
-                {
-                    typewriterStyleOutput(string.Format(@"
+            while (!Console.ReadLine().Equals("N N E E S W"))
+            {
+                typewriterStyleOutput(string.Format(@"
 
 You seemed to have gotten lost. You lose 5 health while trying to find the right location.
 You're health now is {0}.
 ", player.stats["hp"]));
-                    if (player.stats["hp"] <= 0)
-                    {
-                        unconscious();
-                    }
+                if (player.stats["hp"] <= 0)
+                {
+                    unconscious();
                 }
-                typewriterStyleOutput(string.Format(@"
+            }
+            typewriterStyleOutput(string.Format(@"
                 
 You finally arrived at the spot and got off your jeep. It was all so familiar, the trees, the rocks,
 just like in your dream. There stood the gaping mouth of the gold temple, its dark mouth
@@ -345,7 +345,32 @@ the wood. It was just like your dream. You took a deep breath and walked towards
 thinking about why you signed up for this. But you remember the low pay from your job as a
 {0}, the Chicago Outfit’s threats, the mountain of debt and continued into the dark
 esophagus of the ruins.", player.occupation));
+
+            typewriterStyleOutput(@"
+
+You walk into the ruins, holding your breath, as the luxuries of the temple reveal themselves
+around you. Beautiful art and vibrant color graze the walls and cieling of aztec rituals and life.
+But as you watch the hallway expand behind you, you feel a gust of cold air breeze past you.
+The light seemed dimmer as your torch quivers with fear. Suddenly you here a voice call out.        
+
+Who Dares Enter the temple…
+
+What do you respond?
+");
+
+            if (Console.ReadLine().ToLower().Equals("i do"))
+            {
+                player.stats["courage"] += 2;
+                typewriterStyleOutput(string.Format(@"
+                
+A laugh vibrates through the chambers. But instead of feeling a chill down your spine, you
+suddenly gain the urge to laugh along with the voice.You gained two points to Courage.
+Current Courage stats: {0}", player.stats["courage"]));
             }
+            typewriterStyleOutput(@"
+            
+You can move around the temple using the n, s, e and w key, each key moving you north, south
+east and west respectively. You can also type i to check your inventory and s to check your stats.");
         }
 
         private void initTempleMap()
@@ -449,7 +474,7 @@ Because of your speed, you're able to escape successfully.
             }
             if (player.stats["hp"] <= 0)
             {
-                unconscious()
+                unconscious();
             }
             else
             {
