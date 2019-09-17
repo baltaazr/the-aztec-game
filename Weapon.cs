@@ -7,7 +7,7 @@ namespace the_aztec_game
     {
         public double dmg { get; set; }
 
-        public Weapon()
+        public Weapon(string name, string description) : base(name, description)
         {
 
         }

@@ -315,6 +315,36 @@ You : My name is {0}, I want equipments for exploring the nearby ancient temple.
                 }
 
                 string reply = waitForInput(new string[] { "1", "2" });
+
+                typewriterStyleOutput(string.Format(@"
+
+You are well equipped for this job, but now it’s time for you to gain your money and pay off
+your debt. You say goodbye to Juan Perez {0}and head to
+your jeep. You close the car door and continue on your way into the jungle. With the somewhat
+vague instructions Juan Perez has given you, you follow his directions.
+What were the direcitons?
+(Type N for North, S for South, etc. Add spacing between each direction)", store_choice == 1 ? "and Daniel" : ""));
+                while (!Console.ReadLine().Equals("N N E E S W"))
+                {
+                    typewriterStyleOutput(string.Format(@"
+
+You seemed to have gotten lost. You lose 5 health while trying to find the right location.
+You're health now is {0}.
+", player.stats["hp"]));
+                    if (player.stats["hp"] <= 0)
+                    {
+                        unconscious();
+                    }
+                }
+                typewriterStyleOutput(string.Format(@"
+                
+You finally arrived at the spot and got off your jeep. It was all so familiar, the trees, the rocks,
+just like in your dream. There stood the gaping mouth of the gold temple, its dark mouth
+opened wide. Vines covered the rest of the walls, leaving shiny flecks of gold showing between
+the wood. It was just like your dream. You took a deep breath and walked towards the temple,
+thinking about why you signed up for this. But you remember the low pay from your job as a
+{0}, the Chicago Outfit’s threats, the mountain of debt and continued into the dark
+esophagus of the ruins.", player.occupation));
             }
         }
 
@@ -419,11 +449,7 @@ Because of your speed, you're able to escape successfully.
             }
             if (player.stats["hp"] <= 0)
             {
-                typewriterStyleOutput(string.Format(@"
-
-You go unconscious, and you wake up shortly after. You realize you lost {0}.
-", player.cash > 2000 ? "2000 pesos" : "all your money"));
-                player.unconscious();
+                unconscious()
             }
             else
             {
@@ -494,6 +520,15 @@ You dealt {0} damage to the enemy. Not bad.
 
 The enemy has dealt {0} damage on you, your health is now {1}.
 ", dmgDealt, player.stats["hp"]));
+        }
+
+        private void unconscious()
+        {
+            typewriterStyleOutput(string.Format(@"
+
+You go unconscious, and you wake up shortly after. You realize you lost {0}.
+", player.cash > 2000 ? "2000 pesos" : "all your money"));
+            player.unconscious();
         }
     }
 }
