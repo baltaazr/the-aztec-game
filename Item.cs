@@ -1,6 +1,6 @@
 namespace the_aztec_game
 {
-    class Item
+    abstract class Item
     {
         public string name { get; set; }
         public string description { get; set; }
@@ -8,5 +8,7 @@ namespace the_aztec_game
         {
 
         }
+
+        public abstract double getRandDmg();
     }
 }
