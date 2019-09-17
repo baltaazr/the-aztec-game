@@ -1,6 +1,26 @@
 {
-  "0": {},
-  "1": {},
-  "2": {},
-  "3": {}
+	"1": {
+		"name": "Beans",
+		"cost": "50",
+		"benefit": {
+			"category": "hp",
+			"value": "5"
+		}
+	},
+	"2": {
+		"name": "Shovel",
+		"cost": "400",
+		"benefit": {
+			"category": "dmgmod",
+			"value": "50"
+		}
+	},
+	"3": {
+		"name": "Man United Jersey",
+		"cost": "300",
+		"benefit": {
+			"category": "speed",
+			"value": "50"
+		}
+	}
 }
