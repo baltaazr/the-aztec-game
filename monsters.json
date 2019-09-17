@@ -9,9 +9,9 @@
   },
   "1": {
     "name": "The Cihuateteo",
-    "description": "The Cihuateteo were the spirits of women who dies in childbirth. As Childbirth was considered a battle, these spirits were those who fought and fell valiantly as a warrior.",
+    "description": "A female spirit warrior who died of childbirth.",
     "hp": 150,
-    "damage": 20,
+    "damage":15,
     "speed": 15,
     "courage": 15
   },
@@ -35,24 +35,48 @@
     "name": "Giant Axolotl",
     "description": "A pale porsche sized amphibian with gills.",
     "hp": 100,
-    "damage": 5,
+    "damage": 3,
     "speed": 12,
     "courage": 20
   },
   "5": {
-    "name": "Itzpapalotl",
-    "description": "A fearsome skeletal warrior goddess who rules over the paradise world of Tamoanchan, where victims of infant mortality reside and where humans are created. Here grows the Suckling Tree which bears 400,000 nipples. Hm. Not too school-appropriate but very cool–and scary(?)–nonetheless. She is often depicted as a skeletal being with jaguar claws and wings edged by obsidian knifes. Beware of angering her! It might not end well for you.",
-    "hp": 300,
-    "damage": 25,
-    "speed": 20,
-    "courage": 20
+    "name": "Yahui",
+    "description": "A giant reptillian creature with a turtle shell on its back and flint claws",
+    "hp": 50,
+    "damage": 20,
+    "speed": 5,
+    "courage": 10
   },
   "6": {
-    "name": "Citlalicue",
-    "description": "She is a creator goddess, goddess of the stars and the Milky Way, earth, death and darkness. The darkness of the temple just continuously reaffirms her existence in the darkness, the dread, and yet feeling like there is hope in the universe–as long as you respect the stars.",
+    "name": "Ceuyatl",
+    "description": "A big frog with a primitive stone knife.",
+    "hp": 40,
+    "damage": 5,
+    "speed": 30,
+    "courage": 10
+  }
+  "7": {
+    "name": "Mega Axolotl",
+    "description": "A bus sized amphibian with gills.",
     "hp": 300,
-    "damage": 25,
-    "speed": 20,
+    "damage": 5,
+    "speed": 12,
     "courage": 20
+  }
+  "8": {
+    "name": "Ahuizotl",
+    "description": "A dog shaped creature with a clawed hand on its tail.",
+    "hp": 30,
+    "damage": 7,
+    "speed": 50,
+    "courage": 20
+  }
+  "9": {
+    "name": "Cipatli",
+    "description": "A creature part crocodile, part fish, and part frog.",
+    "hp": 40,
+    "damage": 15,
+    "speed": 10,
+    "courage": 10
   }
 }
