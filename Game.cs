@@ -10,6 +10,17 @@ namespace the_aztec_game
       private Room[] templeMap = new Room[17];
       private Player player;
 
+      private Dictionary<string, string> player_attributes = new Dictionary<string, string>()
+                                {
+                                    {"1","Health"},
+                                    {"2", "Strength"},
+                                    {"3","Speed"},
+                                    {"4", "Courage"},
+                                    {"5", "Luck"}
+                                };
+
+      private List<Item> items = new List<Item>();
+
       public Game()
       {
          typewriterStyleOutput("What is your player's name?: ");
@@ -18,7 +29,7 @@ namespace the_aztec_game
          typewriterStyleOutput("What is your player's occupation?: ");
          string occupation = Console.ReadLine();
 
-         player = new Player(name, occupation);
+         player = new Player(name, occupation);/*
 
          int characterPoints = 200;
 
@@ -255,7 +266,7 @@ You, thinking to yourself : Ok. I hope I remember. Although my job as a {1} did
 not prepare me for this.
 ", player.name, player.occupation));
 
-         Console.Read();
+         Console.Read();*/
          typewriterStyleOutput(@"
 
 You walked away before seeing a small store that sold equipments
@@ -270,9 +281,15 @@ for jungle exploration, from a place called Las cosas de Daniel.
       2 : Ehhh… I don’ t need Daniel’s slimy tools.
 ");
 
-
          string store_choice = waitForInput(new string[] { "1", "2" });
 
+         shop(store_choice)
+
+
+      }
+
+      private void shop(string store_choice)
+      {
          if (store_choice.Equals("1"))
          {
             int danconvo1 = 2000;
@@ -296,27 +313,41 @@ You : My name is {0}, I want equipments for exploring the nearby ancient temple.
 
  Daniel brings out some things from a shack behind the house.");
 
-            using (StreamReader r = new StreamReader("items.json"))
+
+            foreach (var i in items)
             {
-               string json = r.ReadToEnd();
-               Dictionary<string, dynamic> items = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
-               foreach (var i in items)
-               {
-                  var item = i.Value;
-                  var item_index = i.Key;
-                  typewriterStyleOutput(string.Format(@"
+               var item = i.Value;
+               var item_index = i.Key;
+
+               typewriterStyleOutput(string.Format(@"
 
             {4}. {0} 
                Cost {1} pesos
                Increase {2} by {3} 
 
-                              ", item.name, item.cost, item.benefit.category, item.benefit.value, item_index));
+                              ", item.name, item.cost, player_attributes[item.benefit.category], item.benefit.value, item_index));
 
-               }
+               string customer_choice = waitForInput(System.Linq.Enumerable.ToArray(items.Keys));
+            }
+
+
+
+         }
+      }
+
+      private void readItems()
+      {
+         using (StreamReader r = new StreamReader("items.json"))
+         {
+            string json = r.ReadToEnd();
+            Dictionary<string, dynamic> jsonItems = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
+            foreach (var item in jsonItems)
+            {
 
             }
          }
       }
+
 
       private void initTempleMap()
       {

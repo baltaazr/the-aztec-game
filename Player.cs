@@ -20,7 +20,7 @@ namespace the_aztec_game
          name = playerName;
          occupation = playerOccupation;
          stats = new Dictionary<string, double>();
-         stats["health"] = 40;
+         stats["hp"] = 40;
          stats["dmgmod"] = 1;
          stats["speed"] = 5;
          stats["courage"] = 0;
@@ -34,7 +34,7 @@ namespace the_aztec_game
   Strength: {1}
   Speed: {2}
   Courage: {3}
-  Luck: {4}", stats["health"], stats["dmgmod"], stats["speed"], stats["courage"], stats["luck"]);
+  Luck: {4}", stats["hp"], stats["dmgmod"], stats["speed"], stats["courage"], stats["luck"]);
       }
 
       public Dictionary<string, int> getMoves()

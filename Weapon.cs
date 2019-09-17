@@ -13,7 +13,7 @@ namespace the_aztec_game
 
       }
 
-      public double getRandDmg()
+      override public double getRandDmg()
       {
          Random r = new Random();
          return (r.NextDouble() + 0.5) * dmg;
