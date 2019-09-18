@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 
 namespace the_aztec_game
 {
@@ -21,6 +21,10 @@ namespace the_aztec_game
         override public string getStringStats()
         {
             return string.Format(@"This weapon does {0} damage.", dmg);
+        }
+        override public Dictionary<string, double> getPerks()
+        {
+            return new Dictionary<string, double>();
         }
     }
 }

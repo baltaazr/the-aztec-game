@@ -26,5 +26,9 @@ namespace the_aztec_game
   Courage: {3}
   Luck: {4}", perks["hp"], perks["dmgmod"], perks["speed"], perks["courage"], perks["luck"]);
         }
+        override public Dictionary<string, double> getPerks()
+        {
+            return perks;
+        }
     }
 }

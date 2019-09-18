@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace the_aztec_game
 {
     abstract class Item
@@ -13,5 +14,7 @@ namespace the_aztec_game
         public abstract double getRandDmg();
 
         public abstract string getStringStats();
+
+        public abstract Dictionary<string, double> getPerks();
     }
 }

@@ -311,8 +311,8 @@ your debt. You say goodbye to Juan Perez {0}and head to
 your jeep. You close the car door and continue on your way into the jungle. With the somewhat
 vague instructions Juan Perez has given you, you follow his directions.
 What were the direcitons?
-(Type N for North, S for South, etc. Add spacing between each direction)", store_choice == 1 ? "and Daniel" : ""));
-            while (!Console.ReadLine().ToUpper() == "N N E E S W")
+(Type N for North, S for South, etc. Add spacing between each direction)", storeChoice == "1" ? "and Daniel" : ""));
+            while (Console.ReadLine().ToUpper() != "N N E E S W")
             {
                 typewriterStyleOutput(string.Format(@"
 
@@ -386,7 +386,7 @@ or e to exit the inventory menu", inventoryString));
                         Item itemSelected = player.inventory[Int32.Parse(inventoryInput) - 1];
                         typewriterStyleOutput(string.Format(@"
                         
-{0}: {1}", itemSelected.name, itemSelected.description));
+{0}: {1}", itemSelected.name, itemSelected.getStringStats()));
                         if (itemSelected is Armor)
                         {
                             typewriterStyleOutput(string.Format(@"
@@ -405,13 +405,14 @@ type y for yes and n for no"));
 
 {0}                        
 Values in parantheses are from your current armor equipped", player.getStringStats()));
+                        break;
                     case "d":
                         typewriterStyleOutput(string.Format(@"
 
 {0}", currentRoom.description));
                         break;
                     case "l":
-                        if (currentRoom.items.length == 0)
+                        if (currentRoom.items.Count == 0)
                         {
                             typewriterStyleOutput(@"
                             
@@ -442,11 +443,12 @@ Press e if you don't want to pick up any item.", itemsString));
                                 break;
                             }
 
-                            Item itemSelected = currentRoom.items[Int32.Parse(inventoryInput) - 1];
-                            player.inventory.Add(itemSelected);
-                            currentRoom.items.RemoveAt(Int32.Parse(inventoryInput) - 1);
+                            Item itemSelectedRoom = currentRoom.items[Int32.Parse(itemsInput) - 1];
+                            player.inventory.Add(itemSelectedRoom);
+                            currentRoom.items.RemoveAt(Int32.Parse(itemsInput) - 1);
                             break;
                         }
+                        break;
                 }
             }
         }
@@ -468,13 +470,13 @@ Press e if you don't want to pick up any item.", itemsString));
                             items.Add(weapon);
                             break;
                         case "Armor":
-                            Dictionary<string, double> perks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
-                            Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), perks);
+                            Dictionary<string, double> armorPerks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
+                            Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), armorPerks);
                             items.Add(armor);
                             break;
                         case "Consumable":
-                            Dictionary<string, double> perks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
-                            Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), perks);
+                            Dictionary<string, double> consumablePerks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
+                            Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), consumablePerks);
                             items.Add(consumable);
                             break;
                         default:
@@ -492,10 +494,10 @@ Press e if you don't want to pick up any item.", itemsString));
             {
 
                 typewriterStyleOutput(string.Format(@"
-            {4}. {0} 
+            {3}. {0} 
                Cost {1} pesos
-               {3}
-                              ", item.name, item.cost, item.getStringStats));
+               {2}
+                              ", item.name, item.cost, item.getStringStats(), index));
                 index++;
             }
         }
@@ -563,7 +565,7 @@ Anything else? <Yes / No>
                 if (item.name.Equals(itemName))
                     return item;
 
-            return new Weapon("error", 0, "error", 0);
+            return new Weapon("error", 0, 0);
         }
 
 
@@ -655,7 +657,7 @@ What do you wish to do now?
 {0}. {1}
 ", i, possibleMove.Key));
                 intIndexToStringIndex[i] = possibleMove.Key;
-                possibleAnswers.Add("" + i);
+                possibleAnswers[i - 1] = "" + i;
                 i += 1;
             }
             int moveIndex = Int32.Parse(waitForInput(possibleAnswers));
