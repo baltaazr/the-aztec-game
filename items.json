@@ -2,7 +2,7 @@
 	"1": {
 		"name": "Beans",
 		"type": "Consumable",
-		"cost": "50",
+		"cost": "10",
 		"benefit": {
 			"category": "hp",
 			"value": "5"
@@ -24,6 +24,35 @@
 		"benefit": {
 			"category": "speed",
 			"value": "50"
+		}
+	},
+	
+	"4": {
+		"name": "Taco de Pollo",
+		"type": "Consumable",
+		"cost": "30",
+		"benefit": {
+			"category": "hp",
+			"value": "30"
+		},
+		
+	"5": {
+		"name": "Machete",
+		"type": "Weapon",
+		"cost": "550",
+		"benefit": {
+			"category": "dmgmod",
+			"value": "70"
+		}
+	},
+		
+	"6": {
+		"name": "Torch",
+		"type": "Weapon",
+		"cost": "300",
+		"benefit": {
+			"category": "courage",
+			"value": "25"
 		}
 	}
 }
