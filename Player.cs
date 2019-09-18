@@ -15,6 +15,8 @@ namespace the_aztec_game
 
       public Item equippedArmor { get; set; }
 
+      public Room currentRoom { get; set; }
+
       private int punchDmg;
 
       public int cash { get; set; }

@@ -3,6 +3,7 @@ namespace the_aztec_game
 {
     class Room
     {
+        public bool deadEnd { get; set; }
         public string description { get; set; }
         public List<Item> items { get; set; }
 
@@ -13,9 +14,13 @@ namespace the_aztec_game
         public Room s { get; set; }
         public Room w { get; set; }
 
-        public Room()
+        public Room(bool deadEndRoom = false)
         {
-
+            n = new Room(true);
+            s = new Room(true);
+            e = new Room(true);
+            w = new Room(true);
+            deadEnd = deadEndRoom;
         }
 
         public (string inventoryString, string[] inventoryOptions) getStringItems()
