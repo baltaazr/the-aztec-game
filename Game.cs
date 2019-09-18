@@ -36,6 +36,7 @@ How many character points would you like to spend on health?: ");
          int cphp = waitForInt();
          characterPoints -= cphp;
          player.stats["hp"] += cphp;
+         player.maxhp = player.stats["hp"];
 
          typewriterStyleOutput(@"
 Every character point added to strength adds 0.05 to the damage modifier. 
