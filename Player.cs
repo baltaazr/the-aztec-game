@@ -14,7 +14,7 @@ namespace the_aztec_game
       public List<Item> inventory { get; set; }
 
       private int punchDmg;
-
+      public int maxhp = 40;
       public int cash { get; set; }
 
       public Player(string playerName, string playerOccupation)
@@ -71,7 +71,7 @@ namespace the_aztec_game
 
       public void unconscious()
       {
-         stats["hp"] = 40;
+         stats["hp"] = maxhp;
          if (cash <= 2000)
          {
             cash = 0;
