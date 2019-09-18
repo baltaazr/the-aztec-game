@@ -6,10 +6,9 @@
     "items": []
   },
   "2": {
-    "n": "8 locked",
+    "n": "8",
     "s": "1",
-    "items": [],
-    "specialActions": "unlock"
+    "items": []
   },
   "3": {
     "n": "4",
@@ -19,11 +18,12 @@
   "4": {
     "s": "3",
     "w": "5",
-    "items": [{ "type": "cash", "amt": 50 }]
+    "cash": 50,
+    "items": []
   },
   "5": {
     "e": "4",
-    "items": [{ "name": "key", "description": "key description" }]
+    "items": []
   },
   "6": {
     "w": "1",
@@ -32,7 +32,8 @@
   },
   "7": {
     "s": "6",
-    "items": [{ "type": "cash", "amt": 50 }]
+    "cash": 50,
+    "items": []
   },
   "8": {
     "n": "12",
@@ -43,11 +44,13 @@
   },
   "9": {
     "w": "8",
-    "items": [{ "type": "cash", "amt": 50 }]
+    "cash": 50,
+    "items": []
   },
   "10": {
     "e": "8",
-    "items": [{ "type": "cash", "amt": 50 }]
+    "cash": 50,
+    "items": []
   },
   "11": {
     "s": "10",
@@ -56,23 +59,26 @@
   "12": {
     "s": "10",
     "n": "13",
-    "events": "boss"
+    "items": []
   },
   "13": {
     "s": "12",
     "e": "14",
-    "w": "15"
+    "w": "15",
+    "items": []
   },
   "14": {
     "w": "13",
-    "items": [{ "type": "cash", "amt": 50 }]
+    "cash": 50,
+    "items": []
   },
   "15": {
     "e": "13",
     "n": "16",
-    "events": "boss"
+    "items": []
   },
   "16": {
-    "s": "15"
+    "s": "15",
+    "items": []
   }
 }

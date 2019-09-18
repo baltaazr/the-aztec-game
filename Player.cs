@@ -19,7 +19,7 @@ namespace the_aztec_game
 
         public int cash { get; set; }
 
-        public int templeRoomLoc { get; set; }
+        public Room currentRoom { get; set; }
 
         public Player(string playerName, string playerOccupation)
         {

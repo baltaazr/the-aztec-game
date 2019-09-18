@@ -362,11 +362,10 @@ east and west respectively. You can also type i to check your inventory, st to c
 d to get a description of the room and l to look around the room.");
 
             initTempleMap();
-            player.templeRoomLoc = 1;
-            while (player.templeRoomLoc != 16)
+            while (Array.IndexOf(templeMap, player.currentRoom) != 16)
             {
                 string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l" });
-                Room currentRoom = templeMap[player.templeRoomLoc];
+                player.currentRoom = templeMap[1];
                 switch (templeInput)
                 {
                     case "i":
@@ -409,10 +408,10 @@ Values in parantheses are from your current armor equipped", player.getStringSta
                     case "d":
                         typewriterStyleOutput(string.Format(@"
 
-{0}", currentRoom.description));
+{0}", player.currentRoom.description));
                         break;
                     case "l":
-                        if (currentRoom.items.Count == 0)
+                        if (player.currentRoom.items.Count == 0)
                         {
                             typewriterStyleOutput(@"
                             
@@ -420,7 +419,7 @@ You look around the room and appear to find nothing of value.");
                         }
                         else
                         {
-                            (string itemsString, string[] itemsOption) = currentRoom.getStringItems();
+                            (string itemsString, string[] itemsOption) = player.currentRoom.getStringItems();
                             typewriterStyleOutput(string.Format(@"
                             
 You look around the room and appear to find:
@@ -428,8 +427,8 @@ You look around the room and appear to find:
 You grab the money. To pick up all the items, press a.
 Or press the number next to specific item you want to pick up.
 Press e if you don't want to pick up any item.", itemsString));
-                            player.cash += currentRoom.cash;
-                            currentRoom.cash = 0;
+                            player.cash += player.currentRoom.cash;
+                            player.currentRoom.cash = 0;
 
                             string itemsInput = waitForInput(itemsOption);
                             if (itemsInput == "e")
@@ -438,16 +437,19 @@ Press e if you don't want to pick up any item.", itemsString));
                             }
                             else if (itemsInput == "a")
                             {
-                                player.inventory.AddRange(currentRoom.items);
-                                currentRoom.items = new List<Item>();
+                                player.inventory.AddRange(player.currentRoom.items);
+                                player.currentRoom.items = new List<Item>();
                                 break;
                             }
 
-                            Item itemSelectedRoom = currentRoom.items[Int32.Parse(itemsInput) - 1];
+                            Item itemSelectedRoom = player.currentRoom.items[Int32.Parse(itemsInput) - 1];
                             player.inventory.Add(itemSelectedRoom);
-                            currentRoom.items.RemoveAt(Int32.Parse(itemsInput) - 1);
+                            player.currentRoom.items.RemoveAt(Int32.Parse(itemsInput) - 1);
                             break;
                         }
+                        break;
+                    default:
+                        moveRoom(templeInput);
                         break;
                 }
             }
@@ -485,6 +487,66 @@ Press e if you don't want to pick up any item.", itemsString));
                     }
                 }
             }
+        }
+
+        private void moveRoom(string dir)
+        {
+            switch (dir)
+            {
+                case "n":
+                    if (player.currentRoom.n.deadEnd)
+                    {
+                        typewriterStyleOutput(@"
+
+That way is a dead end");
+                        break;
+                    }
+                    else
+                    {
+                        player.currentRoom = player.currentRoom.n;
+                    }
+                    break;
+                case "s":
+                    if (player.currentRoom.s.deadEnd)
+                    {
+                        typewriterStyleOutput(@"
+
+That way is a dead end");
+                        break;
+                    }
+                    else
+                    {
+                        player.currentRoom = player.currentRoom.s;
+                    }
+                    break;
+                case "e":
+                    if (player.currentRoom.e.deadEnd)
+                    {
+                        typewriterStyleOutput(@"
+
+That way is a dead end");
+                        break;
+                    }
+                    else
+                    {
+                        player.currentRoom = player.currentRoom.e;
+                    }
+                    break;
+                case "w":
+                    if (player.currentRoom.w.deadEnd)
+                    {
+                        typewriterStyleOutput(@"
+
+That way is a dead end");
+                        break;
+                    }
+                    else
+                    {
+                        player.currentRoom = player.currentRoom.w;
+                    }
+                    break;
+            }
+
         }
 
         private void showItems()
@@ -576,9 +638,14 @@ Anything else? <Yes / No>
             {
                 string json = r.ReadToEnd();
                 Dictionary<string, dynamic> d = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
-                foreach (var key in d.Keys)
+                foreach (var room in d)
                 {
-                    templeMap[Int32.Parse(key)] = new Room();
+                    templeMap[Int32.Parse(room.Key)] = new Room();
+                    templeMap[Int32.Parse(room.Key)].cash = Int32.Parse(room.Value.cash.ToString());
+                    for (int i = 0; i < room.Value.items; i++)
+                    {
+                        templeMap[Int32.Parse(room.Key)].items.Add(items[room.Value.items[i]]);
+                    }
                 }
                 foreach (var key in d.Keys)
                 {
