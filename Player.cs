@@ -13,9 +13,13 @@ namespace the_aztec_game
         public Dictionary<string, double> stats { get; set; }
         public List<Item> inventory { get; set; }
 
+        public Armor equippedArmor { get; set; }
+
         private int punchDmg;
 
         public int cash { get; set; }
+
+        public int templeRoomLoc { get; set; }
 
         public Player(string playerName, string playerOccupation)
         {
@@ -30,14 +34,30 @@ namespace the_aztec_game
             stats["luck"] = 40;
         }
 
-        public string getStats()
+        public string getStringStats()
         {
             return string.Format(@"Current Stats:
   Health: {0}
   Strength: {1}
   Speed: {2}
   Courage: {3}
-  Luck: {4}", stats["hp"], stats["dmgmod"], stats["speed"], stats["courage"], stats["luck"]);
+  Luck: {4}", stringValOfStat("hp"), stringValOfStat("dmgmod"), stringValOfStat("speed"), stringValOfStat("courage"), stringValOfStat("luck"));
+        }
+
+        public Dictionary<string, double> getStatsWArmor()
+        {
+            statsWArmor = new Dictionary<string, double>();
+            statsWArmor["hp"] = stats["hp"] + equippedArmor.perks["hp"];
+            statsWArmor["dmgmod"] = stats["dmgmod"] + equippedArmor.perks["dmgmod"];
+            statsWArmor["speed"] = stats["speed"] + equippedArmor.perks["speed"];
+            statsWArmor["courage"] = stats["courage"] + equippedArmor.perks["courage"];
+            statsWArmor["luck"] = stats["luck"] + equippedArmor.perks["luck"];
+            return statsWArmor;
+        }
+
+        public string stringValOfStat(string stat)
+        {
+            return equippedArmor.perks[stat] != 0 ? string.Format("{0} (+{1})", stats[stat], equippedArmor.perks[stat]) : string.Format("{0}", stats[stat]);
         }
 
         public Dictionary<string, int> getMoves()
@@ -80,6 +100,26 @@ namespace the_aztec_game
             {
                 cash -= 2000;
             }
+        }
+
+        public (string inventoryString, string[] inventoryOptions) getStringInventory()
+        {
+            string inventoryString = "You have a:";
+            string[] inventoryOptions = new string[inventory.Count + 1];
+            for (int i = 0; i < inventory; i++)
+            {
+                Item item = inventory[i];
+                inventoryString += string.Format("\n{0}. {1}", i + 1, item.name + item == equippedArmor ? " (equipped)" : "");
+                inventoryOptions[i] = string.Format("{0}", i + 1);
+            }
+            inventoryString += string.Format("\n and {0} pesos.", cash);
+            inventoryOptions[inventory.Count] = "e";
+            return (inventoryString, inventoryOptions);
+        }
+
+        public void equipArmor(int indexOfArmor)
+        {
+            equippedArmor = inventory[indexOfArmor];
         }
     }
 }

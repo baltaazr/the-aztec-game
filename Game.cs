@@ -21,18 +21,18 @@ namespace the_aztec_game
             player = new Player(name, occupation);
 
             int characterPoints = 200;
-            
+
             if (player.occupation == "Soccer Player")
-                {
-                    player.stats["speed"] += 5;
-                    
-                }
+            {
+                player.stats["speed"] += 5;
+
+            }
 
             typewriterStyleOutput(string.Format(@"
 Character Points: 200
 {0}
 There are four categories to place your character points: Health, Damage, Speed, Courage, and Luck.
-", player.getStats()));
+", player.getStringStats()));
 
             typewriterStyleOutput(@"
 Every character point added to health adds 1 health point. 
@@ -70,7 +70,7 @@ How many character points would you like to spend on luck?: ");
             player.stats["luck"] += cpl * 0.5;
             player.stats["hp"] += characterPoints;
 
-            typewriterStyleOutput(string.Format("\n{0}\n", player.getStats()));
+            typewriterStyleOutput(string.Format("\n{0}\n", player.getStringStats()));
             typewriterStyleOutput(string.Format(@"
 It is the year 1952, you have convinced a private American company that goes by the name
 “Dart” to fund you for a trip to Mexico to investigate a mysterious aztec ruin that you saw in a
@@ -161,9 +161,10 @@ realize you are in your bedroom– and it was all a dream. Or was it?");
 
             typewriterStyleOutput(string.Format(@"
             
-You look besides you, and pick up the phone with dread. It was Tony Accardo, the Big boss of {0}
+You look besides you, and pick up the phone with dread. It was Tony Accardo, the Big boss of
+the Chicago Outfit.
 
-   Tony : Do you have the money yet?               
+   Tony : {0} Do you have the money yet boy?               
 ", player.name));
             System.Threading.Thread.Sleep(3000);
             typewriterStyleOutput(@"         
@@ -173,7 +174,7 @@ You : I - I’m getting it soon.");
 
    Tony : I’m getting really impatient. Tell us what you need to earn this money, or it’s a bye bye.
 
-In this frenzy, you realize that temple of gold would be your way out of debt.");
+In this frenzy, you realize that temple of gold in your dreams would be your way out of debt.");
 
             Console.Read();
 
@@ -330,7 +331,7 @@ your jeep. You close the car door and continue on your way into the jungle. With
 vague instructions Juan Perez has given you, you follow his directions.
 What were the direcitons?
 (Type N for North, S for South, etc. Add spacing between each direction)", store_choice == 1 ? "and Daniel" : ""));
-            while (!Console.ReadLine().Equals("N N E E S W"))
+            while (!Console.ReadLine().ToUpper() == "N N E E S W")
             {
                 typewriterStyleOutput(string.Format(@"
 
@@ -364,7 +365,7 @@ Who Dares Enter the temple…
 What do you respond?
 ");
 
-            if (Console.ReadLine().ToLower().Equals("i do"))
+            if (Console.ReadLine().ToLower() == "i do")
             {
                 player.stats["courage"] += 2;
                 typewriterStyleOutput(string.Format(@"
@@ -376,7 +377,97 @@ Current Courage stats: {0}", player.stats["courage"]));
             typewriterStyleOutput(@"
             
 You can move around the temple using the n, s, e and w key, each key moving you north, south
-east and west respectively. You can also type i to check your inventory and s to check your stats.");
+east and west respectively. You can also type i to check your inventory, st to check your stats,
+d to get a description of the room and l to look around the room.");
+
+            initTempleMap();
+            player.templeRoomLoc = 1;
+            while (player.templeRoomLoc != 16)
+            {
+                string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l" });
+                Room currentRoom = templeMap[player.templeRoomLoc];
+                switch (templeInput)
+                {
+                    case "i":
+                        (string inventoryString, string[] inventoryOptions) = player.getStringInventory();
+                        typewriterStyleOutput(string.Format(@"
+
+{0}                        
+If you want more detail on any specific item, type the number next to the item
+or e to exit the inventory menu", inventoryString));
+
+                        string inventoryInput = waitForInput(inventoryOptions);
+                        if (inventoryInput == "e")
+                        {
+                            break;
+                        }
+
+                        Item itemSelected = player.inventory[Int32.Parse(inventoryInput) - 1];
+                        typewriterStyleOutput(string.Format(@"
+                        
+{0}: {1}", itemSelected.name, itemSelected.description));
+                        if (itemSelected is Armor)
+                        {
+                            typewriterStyleOutput(string.Format(@"
+                            
+Do you wish to equip this armor in place of your currently equipped armor?
+type y for yes and n for no"));
+                            inventoryInput = waitForInput(new string[] { "y", "n" });
+                            if (inventoryInput == "y")
+                            {
+                                player.equipArmor(Int32.Parse(inventoryInput) - 1);
+                            }
+                        }
+                        break;
+                    case "st":
+                        typewriterStyleOutput(string.Format(@"
+
+{0}                        
+Values in parantheses are from your current armor equipped", player.getStringStats()));
+                    case "d":
+                        typewriterStyleOutput(string.Format(@"
+
+{0}", currentRoom.description));
+                        break;
+                    case "l":
+                        if (currentRoom.items.length == 0)
+                        {
+                            typewriterStyleOutput(@"
+                            
+You look around the room and appear to find nothing of value.");
+                        }
+                        else
+                        {
+                            (string itemsString, string[] itemsOption) = currentRoom.getStringItems();
+                            typewriterStyleOutput(string.Format(@"
+                            
+You look around the room and appear to find:
+{0}
+You grab the money. To pick up all the items, press a.
+Or press the number next to specific item you want to pick up.
+Press e if you don't want to pick up any item.", itemsString));
+                            player.cash += currentRoom.cash;
+                            currentRoom.cash = 0;
+
+                            string itemsInput = waitForInput(itemsOption);
+                            if (itemsInput == "e")
+                            {
+                                break;
+                            }
+                            else if (itemsInput == "a")
+                            {
+                                player.inventory.AddRange(currentRoom.items);
+                                currentRoom.items = new List<Item>();
+                                break;
+                            }
+
+                            Item itemSelected = currentRoom.items[Int32.Parse(inventoryInput) - 1];
+                            player.inventory.Add(itemSelected);
+                            currentRoom.items.RemoveAt(Int32.Parse(inventoryInput) - 1);
+                            break;
+                        }
+                }
+            }
         }
 
         private void initTempleMap()
@@ -402,48 +493,6 @@ east and west respectively. You can also type i to check your inventory and s to
                 }
             }
         }
-
-        private string waitForInput(string[] possibleAnswers, string errorMessage = "That wasn't a valid choice.\n")
-        {
-            while (true)
-            {
-                string input = Console.ReadLine();
-                if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
-                else typewriterStyleOutput(errorMessage);
-            }
-        }
-
-        private int waitForInt(string errorMessage = "Could not parse input. Please enter a valid integer: ")
-        {
-            while (true)
-            {
-                string input = Console.ReadLine();
-                int actualInt;
-
-                try
-                {
-                    actualInt = Int32.Parse(input);
-                }
-                catch
-                {
-                    typewriterStyleOutput(errorMessage);
-                    continue;
-                }
-
-                return actualInt;
-            }
-        }
-
-        private void typewriterStyleOutput(string message)
-        {
-            for (int i = 0; i < message.Length; i++)
-            {
-                Console.Write(message[i]);
-                System.Threading.Thread.Sleep(3);
-                // System.Threading.Thread.Sleep(50);
-            }
-        }
-
         private void combat(Enemy enemy)
         {
             typewriterStyleOutput(string.Format(@"
@@ -501,6 +550,7 @@ What do you wish to do now?
             double dmgDealt = 0;
             int i = 1;
             List<string> intIndexToStringIndex = new List<string>();
+            string[] possibleAnswers = new string[possibleMoves.Count];
             foreach (KeyValuePair<string, int> possibleMove in possibleMoves)
             {
                 typewriterStyleOutput(string.Format(@"
@@ -508,10 +558,11 @@ What do you wish to do now?
 {0}. {1}
 ", i, possibleMove.Key));
                 intIndexToStringIndex[i] = possibleMove.Key;
+                possibleAnswers.Add("" + i);
                 i += 1;
             }
-            int moveIndex = waitForInt();
-            if (intIndexToStringIndex[moveIndex].Equals("Retreat"))
+            int moveIndex = Int32.Parse(waitForInput(possibleAnswers));
+            if (intIndexToStringIndex[moveIndex] == "Retreat")
             {
                 if (player.speedRollSuccess())
                 {
@@ -526,7 +577,7 @@ You were unable to escape, seems like you weren't fast enough.
                     return false;
                 }
             }
-            else if (intIndexToStringIndex[moveIndex].Equals("Punch"))
+            else if (intIndexToStringIndex[moveIndex] == "Punch")
             {
                 dmgDealt = player.getRandPunchDamage();
 
@@ -560,6 +611,46 @@ The enemy has dealt {0} damage on you, your health is now {1}.
 You go unconscious, and you wake up shortly after. You realize you lost {0}.
 ", player.cash > 2000 ? "2000 pesos" : "all your money"));
             player.unconscious();
+        }
+        private string waitForInput(string[] possibleAnswers, string errorMessage = "That wasn't a valid choice.\n")
+        {
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
+                else typewriterStyleOutput(errorMessage);
+            }
+        }
+
+        private int waitForInt(string errorMessage = "Could not parse input. Please enter a valid integer: ")
+        {
+            while (true)
+            {
+                string input = Console.ReadLine();
+                int actualInt;
+
+                try
+                {
+                    actualInt = Int32.Parse(input);
+                }
+                catch
+                {
+                    typewriterStyleOutput(errorMessage);
+                    continue;
+                }
+
+                return actualInt;
+            }
+        }
+
+        private void typewriterStyleOutput(string message)
+        {
+            for (int i = 0; i < message.Length; i++)
+            {
+                Console.Write(message[i]);
+                System.Threading.Thread.Sleep(3);
+                // System.Threading.Thread.Sleep(50);
+            }
         }
     }
 }

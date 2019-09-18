@@ -11,7 +11,7 @@
     "name": "The Cihuateteo",
     "description": "A female spirit warrior who died of childbirth.",
     "hp": 150,
-    "damage":15,
+    "damage": 15,
     "speed": 15,
     "courage": 15
   },
@@ -54,7 +54,7 @@
     "damage": 5,
     "speed": 30,
     "courage": 10
-  }
+  },
   "7": {
     "name": "Mega Axolotl",
     "description": "A bus sized amphibian with gills.",
@@ -62,7 +62,7 @@
     "damage": 5,
     "speed": 12,
     "courage": 20
-  }
+  },
   "8": {
     "name": "Ahuizotl",
     "description": "A dog shaped creature with a clawed hand on its tail.",
@@ -70,7 +70,7 @@
     "damage": 7,
     "speed": 50,
     "courage": 20
-  }
+  },
   "9": {
     "name": "Cipatli",
     "description": "A creature part crocodile, part fish, and part frog.",
