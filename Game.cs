@@ -158,10 +158,10 @@ realize you are in your bedroom– and it was all a dream. Or was it?");
 
          typewriterStyleOutput(string.Format(@"
             
-You look besides you, and pick up the phone with dread. It was Tony Accardo, the Big boss of {0}
+You look besides you, and pick up the phone with dread. It was Tony Accardo, the Big boss of the Chicago Outfit and the person you are in debt to after paying too much money for college to be a {0}
 
-   Tony : Do you have the money yet?               
-", player.name));
+   Tony : Do you have the money yet boy?               
+", player.occupation));
          System.Threading.Thread.Sleep(3000);
          typewriterStyleOutput(@"         
 You : I - I’m getting it soon.");
@@ -170,7 +170,7 @@ You : I - I’m getting it soon.");
 
    Tony : I’m getting really impatient. Tell us what you need to earn this money, or it’s a bye bye.
 
-In this frenzy, you realize that temple of gold would be your way out of debt.");
+In this frenzy, you realize that temple of gold in your dreams would be your way out of debt.");
 
          Console.Read();
 
@@ -416,7 +416,7 @@ esophagus of the ruins.", player.occupation));
          }
       }
 
-      private string waitForInput(string[] possibleAnswers, string errorMessage = "That wasn't a valid choice.\n")
+      private string waitForInput(string[] possibleAnswers, string errorMessage = "You walked into the wall, maybe you shouldn't do that.\n")
       {
          while (true)
          {
