@@ -1,78 +1,94 @@
 {
-  "1": {
-    "n": "2",
-    "e": "3",
-    "w": "6",
-    "items": []
-  },
-  "2": {
-    "n": "8 locked",
-    "s": "1",
-    "items": [],
-    "specialActions": "unlock"
-  },
-  "3": {
-    "n": "4",
-    "w": "1",
-    "items": []
-  },
-  "4": {
-    "s": "3",
-    "w": "5",
-    "items": [{ "type": "cash", "amt": 50 }]
-  },
-  "5": {
-    "e": "4",
-    "items": [{ "name": "key", "description": "key description" }]
-  },
-  "6": {
-    "w": "1",
-    "n": "7",
-    "items": []
-  },
-  "7": {
-    "s": "6",
-    "items": [{ "type": "cash", "amt": 50 }]
-  },
-  "8": {
-    "n": "12",
-    "e": "9",
-    "w": "10",
-    "s": "2",
-    "items": []
-  },
-  "9": {
-    "w": "8",
-    "items": [{ "type": "cash", "amt": 50 }]
-  },
-  "10": {
-    "e": "8",
-    "items": [{ "type": "cash", "amt": 50 }]
-  },
-  "11": {
-    "s": "10",
-    "items": []
-  },
-  "12": {
-    "s": "10",
-    "n": "13",
-    "events": "boss"
-  },
-  "13": {
-    "s": "12",
-    "e": "14",
-    "w": "15"
-  },
-  "14": {
-    "w": "13",
-    "items": [{ "type": "cash", "amt": 50 }]
-  },
-  "15": {
-    "e": "13",
-    "n": "16",
-    "events": "boss"
-  },
-  "16": {
-    "s": "15"
-  }
+	"1": {
+		"n": "2",
+		"e": "3",
+		"w": "6",
+		"items": [],
+		"description": "The walls of the temple give off an eerie sensation. \nWhere will you go next?"
+	},
+	"2": {
+		"n": "8 locked",
+		"s": "1",
+		"items": [],
+		"specialActions": "unlock",
+		"description": "You feel colder every second. Just as you reached the end, an old stone door comes into view. \nYou try opening it but it is locked. Where do you go next?"
+	},
+	"3": {
+		"n": "4",
+		"w": "1",
+		"items": [],
+		"description": "You see another pathway open up in front of you. \nDo you go forward or left(to where you were)?"
+	},
+	"4": {
+		"s": "3",
+		"w": "5",
+		"items": [{ "type": "cash", "amt": 50 }],
+		"description": "Before you was a pile of gold near your foot. \nYou picked it up and gained 20,0000 pesos (Add 20,000 to player money). another pathway open up to the right of you.\nDo you go to your left or backward (to where you were)?"
+	},
+	"5": {
+		"e": "4",
+		"items": [{ "name": "key", "description": "key description" }],
+		"description": "You walked to your left to a small chamber were a key lies on a stone block.\nYou picked it up admiring its beauty, before placing it in your bag.\nYou can only walk to your right now. Where do you go?"
+	},
+	"6": {
+		"w": "1",
+		"n": "7",
+		"items": [],
+		"description": "Yeh, yer mind turns whack, ey, ya sound different in yer head. Ya musta been affected by dem mysteries of da temple! \nAy, ya see a goo’ ol’ coin on the floo’! Ya pick 'em up, yeah?\n\nYeah!\n\nTha gold vanished, ya. Yer mind is too slippy, boi, ya seein’ things. Ya musta be outta yer mind, eh? \nNaw where ya wanna go, boi? Ya can go forward or head right (back ta where ya come from)."
+	},
+	"7": {
+		"s": "6",
+		"items": [{ "type": "cash", "amt": 50 }],
+		"description": "EyyyeE-mee-a-see-a-coin-stachio0O! Due to the shock from seeing the marvellousnesse of the golden goods, your minde clears of the temple’s twankeringes withe your inner voice. \nYou picked up the pile of gold, giving you an additional 10,000 pesos (add 10,000 to player’s cash count). \nYou think you can think clearer now. You thwink. In front of you is a dead end.\nYou can only walk backward now. Where do you go?"
+	},
+	"8": {
+		"n": "12",
+		"e": "9",
+		"w": "10",
+		"s": "2",
+		"items": [],
+		"description": "In front of you is another crossroad, after going through the door. Two tunnels on your left and right, with the largest chamber opening infront, \nwhere you hear the laugh of darkness. Do you go to your left, right, forward, or backward (to where you were)?"
+	},
+	"9": {
+		"w": "8",
+		"items": [{ "type": "cash", "amt": 50 }],
+		"description": "It is a dead end, but there is a pile of gold on the floor, \nwhich you pick up immediatley. You gained 10,000 pesos. \n(add 10,000 to player’s cash count). You can only go left now. Where do you go?"
+	},
+	"10": {
+		"e": "8",
+		"items": [{ "type": "cash", "amt": 50 }],
+		"description": "There is a turn at the end of this road. There is another pile of gold on the floor which you picked up. \nYou gained 10,000 pesos. (add 10,000 to player’s cash count). \nYou can go forward or to your right (to where you were). Where do you go?"
+	},
+	"11": {
+		"s": "10",
+		"items": [],
+		"description": " It’s a wall at the end filled with a giant aztec painting of one of their gods. The paint is faded, but you can still see mark the out \nthat it’s a black dog in aztec dressing. You can only go backwards, where do you go?"
+	},
+	"12": {
+		"s": "10",
+		"n": "13",
+		"events": "boss",
+		"description": ""
+	},
+	"13": {
+		"s": "12",
+		"e": "14",
+		"w": "15",
+		"description": "It’s a crossroad that smells bad. A skull lays beside your feet. \nYou can go left or right. Where do you go?"
+	},
+	"14": {
+		"w": "13",
+		"items": [{ "type": "cash", "amt": 50 }],
+		"description": "It is a dead end, but there is stuff in the room. You can only go left now. Where do you go?"
+	},
+	"15": {
+		"e": "13",
+		"n": "16",
+		"events": "boss",
+		"description": "You looked ahead, seeing another dark hallway, but you can hear Xolotl in there. You get shivers down your spine. \nYou can go forward, or right (back to where you were).Where do you go?"
+	},
+	"16": {
+		"s": "15",
+		"description": ""
+	}
 }

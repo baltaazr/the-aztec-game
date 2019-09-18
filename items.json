@@ -1,76 +1,104 @@
 {
-  "1": {
-    "name": "Beans",
-    "type": "Consumable",
-    "cost": "10",
-    "perks": {
-      "hp": 5
-    }
-  },
-  "2": {
-    "name": "Shovel",
-    "type": "Weapon",
-    "cost": "400",
-    "dmg": 50
-  },
-  "3": {
-    "name": "Man United Jersey",
-    "type": "Armor",
-    "cost": "300",
-    "perks": {
-      "speed": 30
-    }
-  },
+	"1": {
+		"name": "Beans",
+		"type": "Consumable",
+		"cost": "10",
+		"perks": {
+			"hp": 5,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+		}
+	},
+	"2": {
+		"name": "Shovel",
+		"type": "Weapon",
+		"cost": "400",
+		"dmg": 50
+	},
+	"3": {
+		"name": "Man United Jersey",
+		"type": "Armor",
+		"cost": "300",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 30,
+			"courage": 0,
+			"luck": 0
+		}
+	},
 
-  "4": {
-    "name": "Taco de Pollo",
-    "type": "Consumable",
-    "cost": "40",
-    "perks": {
-      "hp": 30
-    }
-  },
+	"4": {
+		"name": "Taco de Pollo",
+		"type": "Consumable",
+		"cost": "40",
+		"perks": {
+			"hp": 30,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+		}
+	},
 
-  "5": {
-    "name": "Machete",
-    "type": "Weapon",
-    "cost": "550",
-    "dmg": 70
-  },
+	"5": {
+		"name": "Machete",
+		"type": "Weapon",
+		"cost": "550",
+		"dmg": 70
+	},
 
-  "6": {
-    "name": "Torch",
-    "type": "Weapon",
-    "cost": "300",
-    "perks": {
-      "courage": 25
-    }
-  },
+	"6": {
+		"name": "Torch",
+		"type": "Consumable",
+		"cost": "300",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 25,
+			"luck": 0
+		}
+	},
 
-  "7": {
-    "name": "Chocolatl",
-    "type": "Consumable",
-    "cost": "100",
-    "perks": {
-      "hp": 70
-    }
-  },
+	"7": {
+		"name": "Chocolatl",
+		"type": "Consumable",
+		"cost": "100",
+		"perks": {
+			"hp": 70,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+		}
+	},
 
-  "8": {
-    "name": "Ancient Conquistador Armor",
-    "type": "Armor",
-    "cost": "800",
-    "perks": {
-      "hp": 1000
-    }
-  },
+	"8": {
+		"name": "Ancient Conquistador Armor",
+		"type": "Armor",
+		"cost": "800",
+		"perks": {
+			"hp": 1000,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+		}
+	},
 
-  "9": {
-    "name": "Texocotl - A small winter fruit",
-    "type": "Consumable",
-    "cost": "30",
-    "perks": {
-      "speed": 2
-    }
-  }
+	"9": {
+		"name": "Texocotl",
+		"type": "Consumable",
+		"cost": "30",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 2,
+			"courage": 0,
+			"luck": 0
+		}
+	}
 }
