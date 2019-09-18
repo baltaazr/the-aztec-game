@@ -9,6 +9,7 @@ namespace the_aztec_game
     {
         private Room[] templeMap = new Room[17];
         private Player player;
+        private List<Item> items = new List<Item>();
 
         public Game()
         {
@@ -22,10 +23,12 @@ namespace the_aztec_game
 
             int characterPoints = 200;
 
-            if (player.occupation == "Soccer Player")
+            if (player.occupation.ToLower() == "soccer player" || player.occupation.ToLower() == "football player")
             {
                 player.stats["speed"] += 5;
-
+                typewriterStyleOutput(@"
+                
+Because of your great skills as a football player, you are given 5 extra points on speed!");
             }
 
             typewriterStyleOutput(string.Format(@"
@@ -276,16 +279,12 @@ for jungle exploration, from a place called Las cosas de Daniel.
       2 : Ehhh… I don’ t need Daniel’s slimy tools.
 ");
 
-            int store_choice = 0;
-            string str_store_choice = Console.ReadLine();
-            if (!string.IsNullOrEmpty(str_store_choice))
-                store_choice = Int32.Parse(str_store_choice);
+            string storeChoice = waitForInput(new string[] { "1", "2" });
 
-            if (store_choice == 1)
+            if (storeChoice.Equals("1"))
             {
                 int danconvo1 = 2000;
                 typewriterStyleOutput(@"
-
 You walk over to the store for the tools you need.");
                 System.Threading.Thread.Sleep(danconvo1);
                 typewriterStyleOutput(@"
@@ -293,35 +292,17 @@ You walk over to the store for the tools you need.");
 Daniel: Hola! Who are you ?");
                 System.Threading.Thread.Sleep(danconvo1);
                 typewriterStyleOutput(string.Format(@" 
-
-You : My name is {0}, I want equipments for exploring the nearby ancient temple.
+   You : My name is {0}, I want equipments for exploring the nearby ancient temple.
  ", player.name));
                 System.Threading.Thread.Sleep(danconvo1);
                 typewriterStyleOutput(@" 
+Daniel: Sure. Here are some things you could buy.
+Daniel brings out some things from a shack behind the house.");
 
- Daniel: Sure. Here are some things you could buy.
-
- Daniel brings out some things from a shack behind the house.");
-
-                using (StreamReader r = new StreamReader("items.json"))
-                {
-                    string json = r.ReadToEnd();
-                    Dictionary<string, dynamic> items = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
-                    foreach (var i in items)
-                    {
-                        var item = i.Value;
-                        typewriterStyleOutput(string.Format(@"
-
-            {0} 
-               Cost {1} pesos
-               Increase {2} by {3}
-
-                              ", item.name, item.cost, item.benefit.category, item.benefit.value));
-
-                    }
-                }
-
-                string reply = waitForInput(new string[] { "1", "2" });
+                initItems();
+                showItems();
+                purchaseItems();
+                Console.Read();
             }
             typewriterStyleOutput(string.Format(@"
 
@@ -469,6 +450,122 @@ Press e if you don't want to pick up any item.", itemsString));
                 }
             }
         }
+
+        private void initItems()
+        {
+            using (StreamReader r = new StreamReader("items.json"))
+            {
+                string json = r.ReadToEnd();
+                Dictionary<string, dynamic> jsonItems = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
+                foreach (var jsonItem in jsonItems)
+                {
+                    var itemValue = jsonItem.Value;
+                    string itemClass = itemValue.type;
+                    switch (itemClass)
+                    {
+                        case "Weapon":
+                            Weapon weapon = new Weapon(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), Convert.ToDouble(Int32.Parse(itemValue.dmg.ToString())));
+                            items.Add(weapon);
+                            break;
+                        case "Armor":
+                            Dictionary<string, double> perks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
+                            Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), perks);
+                            items.Add(armor);
+                            break;
+                        case "Consumable":
+                            Dictionary<string, double> perks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
+                            Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), perks);
+                            items.Add(consumable);
+                            break;
+                        default:
+                            Console.WriteLine("Item initialization error");
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void showItems()
+        {
+            int index = 1;
+            foreach (var item in items)
+            {
+
+                typewriterStyleOutput(string.Format(@"
+            {4}. {0} 
+               Cost {1} pesos
+               {3}
+                              ", item.name, item.cost, item.getStringStats));
+                index++;
+            }
+        }
+
+        private void purchaseItems()
+        {
+
+            List<string> itemNames = new List<string>();
+            foreach (var item in items) itemNames.Add(item.name); //get all names
+            List<string> purchasedItems = new List<string>();
+
+            counterCheck(items, itemNames, purchasedItems);
+            typewriterStyleOutput(@"
+You bought: 
+                  ");
+            foreach (var item in items)
+            {
+                foreach (string purchasedItemName in purchasedItems)
+                    if (item.name.Equals(purchasedItemName))
+                    {
+                        player.inventory.Add(item);
+                        typewriterStyleOutput(string.Format(@"
+   {0}
+                  ", purchasedItemName));
+                    }
+            }
+        }
+
+        private void counterCheck(List<Item> items, List<string> itemNames, List<string> purchasedItems)
+        {
+            while (true)
+            {
+                typewriterStyleOutput(string.Format(@"
+What would you like to buy? <Enter Name> 
+Cash: {0}
+         ", player.cash));
+                string itemName = waitForInput(itemNames.ToArray());
+                Item item = findItemByName(itemName);
+                if (player.cash - item.cost < 0)
+                {
+                    typewriterStyleOutput(@"
+What's that? You're out of money? Get out of my shop. 
+         ");
+                    return;
+
+                }
+                player.cash -= item.cost;
+
+                purchasedItems.Add(itemName);
+
+                typewriterStyleOutput(string.Format(@"
+         
+Muchas gracias for buying {0}!
+Anything else? <Yes / No>
+         ", itemName));
+                string purchaseAnswer = waitForInput(new string[] { "Yes", "No" });
+                if (purchaseAnswer.Equals("No")) return;
+
+            }
+        }
+
+        private Item findItemByName(string itemName)
+        {
+            foreach (var item in items)
+                if (item.name.Equals(itemName))
+                    return item;
+
+            return new Weapon("error", 0, "error", 0);
+        }
+
 
         private void initTempleMap()
         {

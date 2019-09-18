@@ -1,6 +1,76 @@
 {
-  "0": {},
-  "1": {},
-  "2": {},
-  "3": {}
+  "1": {
+    "name": "Beans",
+    "type": "Consumable",
+    "cost": "10",
+    "perks": {
+      "hp": 5
+    }
+  },
+  "2": {
+    "name": "Shovel",
+    "type": "Weapon",
+    "cost": "400",
+    "dmg": 50
+  },
+  "3": {
+    "name": "Man United Jersey",
+    "type": "Armor",
+    "cost": "300",
+    "perks": {
+      "speed": 30
+    }
+  },
+
+  "4": {
+    "name": "Taco de Pollo",
+    "type": "Consumable",
+    "cost": "40",
+    "perks": {
+      "hp": 30
+    }
+  },
+
+  "5": {
+    "name": "Machete",
+    "type": "Weapon",
+    "cost": "550",
+    "dmg": 70
+  },
+
+  "6": {
+    "name": "Torch",
+    "type": "Weapon",
+    "cost": "300",
+    "perks": {
+      "courage": 25
+    }
+  },
+
+  "7": {
+    "name": "Chocolatl",
+    "type": "Consumable",
+    "cost": "100",
+    "perks": {
+      "hp": 70
+    }
+  },
+
+  "8": {
+    "name": "Ancient Conquistador Armor",
+    "type": "Armor",
+    "cost": "800",
+    "perks": {
+      "hp": 1000
+    }
+  },
+
+  "9": {
+    "name": "Texocotl - A small winter fruit",
+    "type": "Consumable",
+    "cost": "30",
+    "perks": {
+      "speed": 2
+    }
+  }
 }

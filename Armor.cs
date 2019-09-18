@@ -7,14 +7,24 @@ namespace the_aztec_game
     {
         public Dictionary<string, double> perks { get; set; }
 
-        public Armor(string name, string description) : base(name, description)
+        public Armor(string name, int cost, Dictionary<string, double> armorPerks) : base(name, cost)
         {
-
+            perks = armorPerks;
         }
 
         override public double getRandDmg()
         {
             return 0;
+        }
+
+        override public string getStringStats()
+        {
+            return string.Format(@"Armor buffs:
+  Health: {0}
+  Strength: {1}
+  Speed: {2}
+  Courage: {3}
+  Luck: {4}", perks["hp"], perks["dmgmod"], perks["speed"], perks["courage"], perks["luck"]);
         }
     }
 }

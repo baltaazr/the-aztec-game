@@ -3,13 +3,15 @@ namespace the_aztec_game
     abstract class Item
     {
         public string name { get; set; }
-        public string description { get; set; }
-        public Item(string itemName, string itemDescription)
+        public int cost { get; set; }
+        public Item(string itemName, int itemCost)
         {
             name = itemName;
-            description = itemDescription;
+            cost = itemCost;
         }
 
         public abstract double getRandDmg();
+
+        public abstract string getStringStats();
     }
 }
