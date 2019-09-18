@@ -2,25 +2,25 @@
   "0": {
     "name": "(Boss) Xolotl",
     "description": "",
-    "hp": 300,
-    "damage": 25,
+    "hp":  450,
+    "damage": 30,
     "speed": 20,
-    "courage": 20
+    "courage": 30
   },
   "1": {
     "name": "The Cihuateteo",
     "description": "A female spirit warrior who died of childbirth.",
-    "hp": 150,
-    "damage": 15,
-    "speed": 15,
-    "courage": 15
+    "hp": 180,
+    "damage": 20,
+    "speed": 20,
+    "courage": 20
   },
   "2": {
     "name": "Centzon Totochtin",
     "description": "An aggressive mystical rabbit has appeared.",
     "hp": 20,
     "damage": 5,
-    "speed": 40,
+    "speed": 50,
     "courage": 0
   },
   "3": {
@@ -34,7 +34,7 @@
   "4": {
     "name": "Giant Axolotl",
     "description": "A pale porsche sized amphibian with gills.",
-    "hp": 100,
+    "hp": 150,
     "damage": 3,
     "speed": 12,
     "courage": 20
@@ -42,24 +42,24 @@
   "5": {
     "name": "Yahui",
     "description": "A giant reptillian creature with a turtle shell on its back and flint claws",
-    "hp": 50,
+    "hp": 90,
     "damage": 20,
     "speed": 5,
-    "courage": 10
+    "courage": 5
   },
   "6": {
     "name": "Ceuyatl",
     "description": "A big frog with a primitive stone knife.",
     "hp": 40,
-    "damage": 5,
-    "speed": 30,
+    "damage": 8,
+    "speed": 40,
     "courage": 10
   },
   "7": {
     "name": "Mega Axolotl",
     "description": "A bus sized amphibian with gills.",
-    "hp": 300,
-    "damage": 5,
+    "hp": 400,
+    "damage": 8,
     "speed": 12,
     "courage": 20
   },
@@ -68,15 +68,23 @@
     "description": "A dog shaped creature with a clawed hand on its tail.",
     "hp": 30,
     "damage": 7,
-    "speed": 50,
+    "speed": 70,
     "courage": 20
   },
   "9": {
     "name": "Cipatli",
     "description": "A creature part crocodile, part fish, and part frog.",
-    "hp": 40,
-    "damage": 15,
+    "hp": 60,
+    "damage": 25,
     "speed": 10,
     "courage": 10
+  },
+  "10": {
+    "name": "Vampyrum Spectrum",
+    "description": "A carnivorous bat.",
+    "hp": 20,
+    "damage": 10,
+    "speed": 55,
+    "courage": 50
   }
 }
