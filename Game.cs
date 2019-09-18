@@ -10,15 +10,6 @@ namespace the_aztec_game
       private Room[] templeMap = new Room[17];
       private Player player;
 
-      private Dictionary<string, string> player_attributes = new Dictionary<string, string>()
-                                {
-                                    {"1","Health"},
-                                    {"2", "Strength"},
-                                    {"3","Speed"},
-                                    {"4", "Courage"},
-                                    {"5", "Luck"}
-                                };
-
       private List<Item> items = new List<Item>();
 
       public Game()
@@ -29,7 +20,7 @@ namespace the_aztec_game
          typewriterStyleOutput("What is your player's occupation?: ");
          string occupation = Console.ReadLine();
 
-         player = new Player(name, occupation);/*
+         player = new Player(name, occupation);
 
          int characterPoints = 200;
 
@@ -266,7 +257,7 @@ You, thinking to yourself : Ok. I hope I remember. Although my job as a {1} did
 not prepare me for this.
 ", player.name, player.occupation));
 
-         Console.Read();*/
+         Console.Read();
          typewriterStyleOutput(@"
 
 You walked away before seeing a small store that sold equipments
@@ -281,15 +272,9 @@ for jungle exploration, from a place called Las cosas de Daniel.
       2 : Ehhh… I don’ t need Daniel’s slimy tools.
 ");
 
+
          string store_choice = waitForInput(new string[] { "1", "2" });
 
-         shop(store_choice)
-
-
-      }
-
-      private void shop(string store_choice)
-      {
          if (store_choice.Equals("1"))
          {
             int danconvo1 = 2000;
@@ -304,50 +289,107 @@ Daniel: Hola! Who are you ?");
             System.Threading.Thread.Sleep(danconvo1);
             typewriterStyleOutput(string.Format(@" 
 
-You : My name is {0}, I want equipments for exploring the nearby ancient temple.
+   You : My name is {0}, I want equipments for exploring the nearby ancient temple.
  ", player.name));
             System.Threading.Thread.Sleep(danconvo1);
             typewriterStyleOutput(@" 
 
- Daniel: Sure. Here are some things you could buy.
+Daniel: Sure. Here are some things you could buy.
 
- Daniel brings out some things from a shack behind the house.");
+Daniel brings out some things from a shack behind the house.");
+
+            initItems();
+            showItems();
 
 
-            foreach (var i in items)
+            typewriterStyleOutput(string.Format(@"
+
+You are well equipped for this job, but now it’s time for you to gain your money and pay off
+your debt. You say goodbye to Juan Perez {0}and head to
+your jeep. You close the car door and continue on your way into the jungle. With the somewhat
+vague instructions Juan Perez has given you, you follow his directions.
+What were the direcitons?
+(Type N for North, S for South, etc. Add spacing between each direction)", store_choice.Equals("1") ? "and Daniel" : ""));
+            while (!Console.ReadLine().Equals("N N E E S W"))
             {
-               var item = i.Value;
-               var item_index = i.Key;
-
                typewriterStyleOutput(string.Format(@"
 
-            {4}. {0} 
-               Cost {1} pesos
-               Increase {2} by {3} 
-
-                              ", item.name, item.cost, player_attributes[item.benefit.category], item.benefit.value, item_index));
-
-               string customer_choice = waitForInput(System.Linq.Enumerable.ToArray(items.Keys));
+You seemed to have gotten lost. You lose 5 health while trying to find the right location.
+You're health now is {0}.
+", player.stats["hp"]));
+               if (player.stats["hp"] <= 0)
+               {
+                  unconscious();
+               }
             }
-
-
-
+            typewriterStyleOutput(string.Format(@"
+                
+You finally arrived at the spot and got off your jeep. It was all so familiar, the trees, the rocks,
+just like in your dream. There stood the gaping mouth of the gold temple, its dark mouth
+opened wide. Vines covered the rest of the walls, leaving shiny flecks of gold showing between
+the wood. It was just like your dream. You took a deep breath and walked towards the temple,
+thinking about why you signed up for this. But you remember the low pay from your job as a
+{0}, the Chicago Outfit’s threats, the mountain of debt and continued into the dark
+esophagus of the ruins.", player.occupation));
          }
       }
 
-      private void readItems()
+
+      private void initItems()
       {
          using (StreamReader r = new StreamReader("items.json"))
          {
             string json = r.ReadToEnd();
             Dictionary<string, dynamic> jsonItems = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
-            foreach (var item in jsonItems)
+            foreach (var jsonItem in jsonItems)
             {
-
+               var itemValue = jsonItem.Value;
+               string itemClass = itemValue.type;
+               switch (itemClass)
+               {
+                  case "Weapon":
+                     Weapon weapon = new Weapon(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), itemValue.benefit.category.ToString(), Int32.Parse(itemValue.benefit.value.ToString()));
+                     items.Add(weapon);
+                     break;
+                  case "Armor":
+                     Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), itemValue.benefit.category.ToString(), Int32.Parse(itemValue.benefit.value.ToString()));
+                     items.Add(armor);
+                     break;
+                  case "Consumable":
+                     //Console.WriteLine(Int32.Parse(itemValue.cost.ToString()).GetType());
+                     Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), itemValue.benefit.category.ToString(), Int32.Parse(itemValue.benefit.value.ToString()));
+                     items.Add(consumable);
+                     break;
+                  default:
+                     Console.WriteLine("Item initialization error");
+                     break;
+               }
             }
          }
       }
 
+      private void showItems()
+      {
+         foreach (var item in items)
+         {
+            int index = 1;
+            typewriterStyleOutput(string.Format(@"
+
+            {4}. {0} 
+               Cost {1} pesos
+               Increase {2} by {3} 
+
+                              ", item.name, item.cost, item.benefitCategory, item.benefitValue, index));
+            index++;
+
+         }
+      }
+
+      private void purchaseItems()
+      {
+
+
+      }
 
       private void initTempleMap()
       {
@@ -447,8 +489,18 @@ Because of your speed, you're able to escape successfully.
 ");
                return;
             }
-         }
+            if (player.stats["hp"] <= 0)
+            {
+               unconscious();
+            }
+            else
+            {
+               typewriterStyleOutput(@"
 
+You're able to kill the enemy. Good job.");
+            }
+
+         }
       }
 
       private bool playerCombatTurn(ref Enemy enemy)
@@ -505,7 +557,26 @@ You dealt {0} damage to the enemy. Not bad.
 
       private void enemyCombatTurn(ref Enemy enemy)
       {
+         double dmgDealt = enemy.getRandDmg();
+         player.stats["hp"] -= dmgDealt;
+         typewriterStyleOutput(string.Format(@"
 
+The enemy has dealt {0} damage on you, your health is now {1}.
+", dmgDealt, player.stats["hp"]));
+      }
+
+      private void unconscious()
+      {
+         typewriterStyleOutput(string.Format(@"
+
+You go unconscious, and you wake up shortly after. You realize you lost {0}.
+", player.cash > 2000 ? "2000 pesos" : "all your money"));
+         player.unconscious();
       }
    }
 }
+
+
+
+
+

@@ -15,10 +15,13 @@ namespace the_aztec_game
 
       private int punchDmg;
 
+      public int cash { get; set; }
+
       public Player(string playerName, string playerOccupation)
       {
          name = playerName;
          occupation = playerOccupation;
+         cash = 1000;
          stats = new Dictionary<string, double>();
          stats["hp"] = 40;
          stats["dmgmod"] = 1;
@@ -64,6 +67,19 @@ namespace the_aztec_game
       {
          Random r = new Random();
          return (r.NextDouble() + 0.5) * punchDmg;
+      }
+
+      public void unconscious()
+      {
+         stats["hp"] = 40;
+         if (cash <= 2000)
+         {
+            cash = 0;
+         }
+         else
+         {
+            cash -= 2000;
+         }
       }
    }
 }
