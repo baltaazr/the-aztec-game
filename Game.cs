@@ -316,22 +316,20 @@ your jeep. You close the car door and continue on your way into the jungle. With
 vague instructions Juan Perez has given you, you follow his directions.
 What were the direcitons?
 (Type N for North, S for South, etc. Add spacing between each direction)", storeChoice == "1" ? "and Daniel" : ""));
-            string answerDirections = Console.ReadLine();
-            if (!answerDirections.Equals("N N E E S W"))
-                while (!Console.ReadLine().ToUpper().Equals("N N E E S W"))
-                {
-                    player.stats["hp"] -= 5;
-                    typewriterStyleOutput(string.Format(@"
+            while (Console.ReadLine().ToUpper() != "N N E E S W")
+            {
+                player.stats["hp"] -= 5;
+                typewriterStyleOutput(string.Format(@"
 
 You seemed to have gotten lost. You lose 5 health while trying to find the right location.
 You're health now is {0}. Enter in the correct directions!!
 ", player.stats["hp"]));
 
-                    if (player.stats["hp"] <= 0)
-                    {
-                        unconscious();
-                    }
+                if (player.stats["hp"] <= 0)
+                {
+                    unconscious();
                 }
+            }
             typewriterStyleOutput(@"
 You finally arrived at the spot and got off your jeep.It was all so familiar, the trees, the rocks,
 just like in your dream. There stood the gaping mouth of the gold temple, its dark mouth
@@ -692,12 +690,13 @@ Anything else? <Yes / No>
                 Dictionary<string, dynamic> d = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
                 foreach (var room in d)
                 {
-                    templeMap[Int32.Parse(room.Key)] = new Room();
-                    templeMap[Int32.Parse(room.Key)].description = (room.Value.description.ToString());
-                    templeMap[Int32.Parse(room.Key)].cash = Int32.Parse(room.Value.cash.ToString());
-                    for (int i = 0; i < room.Value.items; i++)
+                    templeMap[Int32.Parse(room.Key.ToString())] = new Room();
+                    templeMap[Int32.Parse(room.Key.ToString())].description = (room.Value.description.ToString());
+                    templeMap[Int32.Parse(room.Key.ToString())].cash = Int32.Parse(room.Value.cash.ToString());
+                    int[] itemArray = room.Value.items.ToObject<int[]>();
+                    for (int i = 0; i < itemArray.Length; i++)
                     {
-                        templeMap[Int32.Parse(room.Key)].items.Add(items[room.Value.items[i]]);
+                        templeMap[Int32.Parse(room.Key.ToString())].items.Add(items[room.Value.items[i]]);
                     }
                 }
 
