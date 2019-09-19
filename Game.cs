@@ -11,6 +11,8 @@ namespace the_aztec_game
       private Player player;
       private List<Item> items = new List<Item>();
 
+      private List<Enemy> enemies = new List<Enemy>();
+
       public Game()
       {
          typewriterStyleOutput("What is your player's name?: ");
@@ -21,7 +23,7 @@ namespace the_aztec_game
 
          player = new Player(name, occupation);
 
-         /*int characterPoints = 200;
+         int characterPoints = 200;
 
          if (player.occupation.ToLower() == "soccer player" || player.occupation.ToLower() == "football player")
          {
@@ -264,7 +266,7 @@ You : How do I get there?
 You, thinking to yourself : Ok. I hope I remember. Although my job as a {1} did
 not prepare me for this.
 ", player.name, player.occupation));
-         Console.Read();*/
+         Console.Read();
          typewriterStyleOutput(@"
 
 You walked away before seeing a small store that sold equipments
@@ -375,7 +377,10 @@ east and west respectively. You can also type <i> to check your inventory, <st> 
 <d> to get a description of the room and <l> to look around the room.
 ");
 
+         initEnemies();
          initTempleMap();
+
+         Console.WriteLine("heyyyyyyyyyyyyyyyy");
          player.templeRoomLoc = 1;
          while (player.templeRoomLoc != 16)
          {
@@ -685,7 +690,7 @@ Anything else? <Yes / No>
       private void initTempleMap()
       {
          String[] dirs = { "n ", "e ", "s ", " w " };
-         using (StreamReader r = new StreamReader("map.json "))
+         using (StreamReader r = new StreamReader("map.json"))
          {
 
             string json = r.ReadToEnd();
@@ -695,7 +700,7 @@ Anything else? <Yes / No>
                templeMap[Int32.Parse(room.Key)] = new Room();
                templeMap[Int32.Parse(room.Key)].description = (room.Value.description.ToString());
                templeMap[Int32.Parse(room.Key)].cash = Int32.Parse(room.Value.cash.ToString());
-               for (int i = 0; i < room.Value.items; i++)
+               for (int i = 0; i < room.Value.items.Count; i++)
                {
                   templeMap[Int32.Parse(room.Key)].items.Add(items[room.Value.items[i]]);
                }
@@ -710,6 +715,28 @@ Anything else? <Yes / No>
                      typeof(Room).GetProperty(dir).SetValue(templeMap[Int32.Parse(key)], templeMap[Int32.Parse(d[key][dir])]);
                   }
                }
+            }
+         }
+      }
+
+      private void initEnemies()
+      {
+         using (StreamReader r = new StreamReader("monsters.json"))
+         {
+            string json = r.ReadToEnd();
+            Dictionary<string, dynamic> jsonMonsters = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
+            foreach (var jsonMonster in jsonMonsters)
+            {
+               var monsterValue = jsonMonster.Value;
+               Dictionary<string, double> monsterStats = new Dictionary<string, double>();
+               monsterStats.Add("hp", Convert.ToDouble(Int32.Parse(monsterValue.hp.ToString())));
+               monsterStats.Add("damage", Convert.ToDouble(Int32.Parse(monsterValue.damage.ToString())));
+               monsterStats.Add("speed", Convert.ToDouble(Int32.Parse(monsterValue.speed.ToString())));
+               monsterStats.Add("courage", Convert.ToDouble(Int32.Parse(monsterValue.courage.ToString())));
+
+               Enemy monster = new Enemy(monsterValue.name.ToString(), monsterValue.description.ToString(), monsterStats);
+               enemies.Add(monster);
+
             }
          }
       }
