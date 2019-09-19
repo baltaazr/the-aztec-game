@@ -16,10 +16,16 @@ namespace the_aztec_game
 
         public Room(bool deadEndRoom = false)
         {
-            n = new Room(true);
-            s = new Room(true);
-            e = new Room(true);
-            w = new Room(true);
+            if (!deadEndRoom)
+            {
+                n = new Room(true);
+                s = new Room(true);
+                e = new Room(true);
+                w = new Room(true);
+                items = new List<Item>();
+                cash = 0;
+                description = "";
+            }
             deadEnd = deadEndRoom;
         }
 
