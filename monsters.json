@@ -6,7 +6,7 @@
     "damage": 30,
     "speed": 20,
     "courage": 30,
-    "image": 
+    "image": ""
   },
   "1": {
     "name": "The Cihuateteo",
@@ -15,7 +15,7 @@
     "damage": 20,
     "speed": 20,
     "courage": 20,
-    "image": 
+    "image": ""
   },
   "2": {
     "name": "Centzon Totochtin",
@@ -24,7 +24,7 @@
     "damage": 5,
     "speed": 50,
     "courage": 0,
-    "image": 
+    "image": ""
   },
   "3": {
     "name": "Big Axolotl",

@@ -1,0 +1,103 @@
+{
+	"1": {
+		"name": "Beans",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 5,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+		}
+	},
+	"2": {
+		"name": "Texocotl",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 2,
+			"courage": 0,
+			"luck": 0
+	},
+	"3": {
+		"name": "Blood Feather",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 5,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+	},
+			
+	"4": {
+		"name": "Aqua Feather",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 5,
+			"courage": 0,
+			"luck": 0
+	},
+	"5": {
+		"name": "Sun Feather",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 5
+	},
+	"6": {
+		"name": "Obsidian Knife",
+		"type": "Weapon",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 35,
+			"speed": 5,
+			"courage": 0,
+			"luck": 0
+	},
+	"7": {
+		"name": "Old Half Sharpened Rock",
+		"type": "Weapon",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 10,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+	},
+	"8": {
+		"name": "Coffee Beans",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 10,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 2,
+			"luck": 0
+	},
+
+	"9": {
+		"name": "Mystic Powder",
+		"type": "Consumable",
+		"cost": "0",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 5,
+			"courage": 2,
+			"luck": 0
+	}
