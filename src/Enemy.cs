@@ -18,7 +18,8 @@ namespace the_aztec_game
     public double getRandDmg()
     {
       Random r = new Random();
-      return (r.NextDouble() + 0.5) * stats["damage"];
+      double fix = Math.Pow(10, Configs.DAMAGE_PRECISION);
+      return Math.Round((r.NextDouble() + 0.5) * stats["damage"] * fix) / fix;
     }
   }
 }

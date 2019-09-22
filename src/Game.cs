@@ -882,7 +882,7 @@ Anything else? <Yes / No>
 
 It seems you have encountered a hostile creature.
 
-It seems to be a {0}, {1}.
+It seems to be a {0}, {1}
 ", enemy.name, enemy.description));
       if (player.speedRollSuccess())
       {
@@ -918,7 +918,8 @@ Because of your speed, you're able to escape successfully.
       {
         typewriterStyleOutput(@"
 
-You're able to kill the enemy. Good job.");
+You're able to kill the enemy. Good job.
+");
       }
 
     }
@@ -926,7 +927,6 @@ You're able to kill the enemy. Good job.");
     private bool playerCombatTurn(ref Enemy enemy)
     {
       typewriterStyleOutput(@"
-
 What do you wish to do now?
 ");
       Dictionary<string, int> possibleMoves = player.getMoves();
@@ -937,15 +937,14 @@ What do you wish to do now?
       foreach (KeyValuePair<string, int> possibleMove in possibleMoves)
       {
         typewriterStyleOutput(string.Format(@"
-
 {0}. {1}
 ", i, possibleMove.Key));
-        intIndexToStringIndex[i] = possibleMove.Key;
+        intIndexToStringIndex.Add(possibleMove.Key);
         possibleAnswers[i - 1] = "" + i;
         i += 1;
       }
       int moveIndex = Int32.Parse(waitForInput(possibleAnswers));
-      if (intIndexToStringIndex[moveIndex] == "Retreat")
+      if (intIndexToStringIndex[moveIndex - 1] == "Retreat")
       {
         if (player.speedRollSuccess())
         {
@@ -960,14 +959,14 @@ You were unable to escape, seems like you weren't fast enough.
           return false;
         }
       }
-      else if (intIndexToStringIndex[moveIndex] == "Punch")
+      else if (intIndexToStringIndex[moveIndex - 1] == "Punch")
       {
         dmgDealt = player.getRandPunchDamage();
 
       }
       else
       {
-        dmgDealt = player.inventory[possibleMoves[intIndexToStringIndex[moveIndex]]].getRandDmg();
+        dmgDealt = player.inventory[possibleMoves[intIndexToStringIndex[moveIndex - 1]]].getRandDmg();
       }
       typewriterStyleOutput(string.Format(@"
 
@@ -982,7 +981,6 @@ You dealt {0} damage to the enemy. Not bad.
       double dmgDealt = enemy.getRandDmg();
       player.stats["hp"] -= dmgDealt;
       typewriterStyleOutput(string.Format(@"
-
 The enemy has dealt {0} damage on you, your health is now {1}.
 ", dmgDealt, player.stats["hp"]));
     }

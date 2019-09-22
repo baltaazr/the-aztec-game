@@ -90,7 +90,9 @@ namespace the_aztec_game
     public double getRandPunchDamage()
     {
       Random r = new Random();
-      return (r.NextDouble() + 0.5) * punchDmg;
+      double fix = Math.Pow(10, Configs.DAMAGE_PRECISION);
+
+      return Math.Round((r.NextDouble() + 0.5) * punchDmg * fix) / fix;
     }
 
     public void unconscious()
