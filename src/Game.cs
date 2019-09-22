@@ -974,8 +974,7 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
       for (int i = 0; i < message.Length; i++)
       {
         Console.Write(message[i]);
-        System.Threading.Thread.Sleep(3);
-        // System.Threading.Thread.Sleep(50);
+        System.Threading.Thread.Sleep(Configs.PRINT_DELAY);
       }
     }
 
