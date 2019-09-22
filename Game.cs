@@ -474,6 +474,8 @@ Press e if you don't want to pick up any item.", itemsString));
             }
          }
 
+
+
          /*typewriterStyleOutput(@"
 
 Xolotl, falls to the ground, dying.
@@ -977,3 +979,60 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
       }
    }
 }
+
+/*typewriterStyleOutput(@"
+
+You walk down the hall that was dimly lit by fire, which was odd, considering that the temple had been abandoned for centuries. 
+You feel dread crawl up your body as you slowly continue, as more paintings of a monstorus black dog in an aztec costume, covered the walls. 
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+You realize you should have brought friends and rethink this plan, but then again, aztec gods are only a myth, right? 
+");
+Console.Read();
+typewriterStyleOutput(string.Format(@"
+
+Your years of studying and learning at Wilber Junior College to be a {0} proved that already. 
+Suddenly, you stop in your tracks. 
+", player.occupation));
+Console.Read();
+typewriterStyleOutput(@"
+
+A giant humanoid black dog, just like the ones in the paintings, walk out from behind a pillar with an obsidian sword in hand. 
+
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+Timiqui, 
+The Dog man says as he walked forward towards you. 
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+You suddenly remember the name of the god from a book you read a few years ago. A black dog god called Xolotl. 
+There is no escaping, your only way out is to fight.
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+Xolotl runs toward you, swift as shadow, gliding across the stones. You step back, dropping your torch...
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+...but before you can do anything you feel the black obsidian blade slide into your stomach like a hot knife through butter. 
+You feel as if the blade has drained your body of energy as you slide on the floor. 
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+The Aztec god stands in front of you for a second before rummaging through your bag for money. 
+");
+Console.Read();
+typewriterStyleOutput(@"
+
+You watch in silence as Xolotl takes all the gold and the rest of your cash before walking away.
+");
+Console.Read();*/
