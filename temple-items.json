@@ -61,10 +61,16 @@
 		}
 	},
 	"6": {
-		"name": "Obsidian Knife",
+		"name": "Lebron James Jersey",
 		"type": "Weapon",
 		"cost": "0",
-		"dmg": 35
+		"perks": {
+			"hp": 600,
+			"dmgmod": 3,
+			"speed": 3,
+			"courage": 3,
+			"luck": 3
+		}
 	},
 	"7": {
 		"name": "Old Half Sharpened Rock",
