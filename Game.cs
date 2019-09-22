@@ -318,7 +318,7 @@ namespace the_aztec_game
          // What were the direcitons?
          // (Type N for North, S for South, etc. Add spacing between each direction)", storeChoice == "1" ? "and Daniel" : ""));
          //             string answerDirections = Console.ReadLine();
-         //             if (!answerDirections.Equals("N N E E S W"))
+         //             if (!answerDirections.ToUpper().Trim().Equals("N N E E S W"))
          //                 while (!Console.ReadLine().ToUpper().Equals("N N E E S W"))
          //                 {
          //                     player.stats["hp"] -= 5;
@@ -474,7 +474,7 @@ Press e if you don't want to pick up any item.", itemsString));
             }
          }
 
-         typewriterStyleOutput(@"
+         /*typewriterStyleOutput(@"
 
 Xolotl, falls to the ground, dying.
          ");
@@ -521,6 +521,63 @@ Juan lays still until he breathes his last breath.
 You get up and walk out the temple, baffled. The sun never looked so bright in your life.         
          ");
          Console.Read();
+         typewriterStyleOutput(@"
+
+
+          |
+          |   .
+   `.  *  |     .'
+     `. ._|_* .'  .
+   . * .'   `.  *
+-------|     |-------
+   .  *`.___.' *  .
+      .'  |* `.  *
+    .' *  |  . `.
+        . |
+          | 
+         
+         ");
+         Console.Read();
+
+         typewriterStyleOutput(@"
+
+You fly back to Chicago two days later. It was a long flight, but you finally get home to your apartment at 7:00 PM, 
+exhausted from your journey. 
+");
+         typewriterStyleOutput(string.Format(@"
+
+You quickly go to sleep after gobbling down a cheese burger. When you wake up from the next morning, 
+you look at all the money you brought back after trading the gold for pesos, a grand total of {1}
+ – way more than you could get in a four year’s work as a {0}. 
+", player.occupation, player.cash));
+         typewriterStyleOutput(@"
+
+The doorbell rings. You open the door.");
+         typewriterStyleOutput(@"
+
+Two guys stand in front holding a thompson machine gun. Woah. Surprise. 
+
+They are both from the Chicago Outfit. One of the guys you recognize is called Joe Baloney.
+");
+         typewriterStyleOutput(string.Format(@"
+
+Joe: Heard ya’s back. You betta be {0}?
+", player.name));
+         typewriterStyleOutput(@"
+
+   You: Yas.
+");
+         typewriterStyleOutput(@"
+
+Joe: Do you have more than 30000?
+");
+         typewriterStyleOutput(string.Format(@"
+
+You: I-I have {0}.
+
+", player.cash));*/
+
+
       }
 
 
@@ -861,7 +918,7 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
          enemies = Initializers.initEnemies();
          items = Initializers.initItems("items.json");
          templeItems = Initializers.initItems("temple-items.json");
-         templeMap = Initializers.initTempleMap(items);
+         templeMap = Initializers.initTempleMap(templeItems);
       }
    }
 }

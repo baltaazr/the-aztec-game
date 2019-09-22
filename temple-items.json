@@ -21,6 +21,7 @@
 			"speed": 2,
 			"courage": 0,
 			"luck": 0
+		}
 	},
 	"3": {
 		"name": "Blood Feather",
@@ -32,8 +33,9 @@
 			"speed": 0,
 			"courage": 0,
 			"luck": 0
+		}
 	},
-			
+
 	"4": {
 		"name": "Aqua Feather",
 		"type": "Consumable",
@@ -44,6 +46,7 @@
 			"speed": 5,
 			"courage": 0,
 			"luck": 0
+		}
 	},
 	"5": {
 		"name": "Sun Feather",
@@ -55,28 +58,19 @@
 			"speed": 0,
 			"courage": 0,
 			"luck": 5
+		}
 	},
 	"6": {
 		"name": "Obsidian Knife",
 		"type": "Weapon",
 		"cost": "0",
-		"perks": {
-			"hp": 0,
-			"dmgmod": 35,
-			"speed": 5,
-			"courage": 0,
-			"luck": 0
+		"dmg": 35
 	},
 	"7": {
 		"name": "Old Half Sharpened Rock",
 		"type": "Weapon",
 		"cost": "0",
-		"perks": {
-			"hp": 0,
-			"dmgmod": 10,
-			"speed": 0,
-			"courage": 0,
-			"luck": 0
+		"dmg": 10
 	},
 	"8": {
 		"name": "Coffee Beans",
@@ -88,6 +82,7 @@
 			"speed": 0,
 			"courage": 2,
 			"luck": 0
+		}
 	},
 
 	"9": {
@@ -100,4 +95,6 @@
 			"speed": 5,
 			"courage": 2,
 			"luck": 0
+		}
 	}
+}
