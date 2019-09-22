@@ -1,0 +1,35 @@
+{
+	"1": {
+		"name": "Beans",
+		"type": "Consumable",
+		"cost": "10",
+		"perks": {
+			"hp": 5,
+			"dmgmod": 0,
+			"speed": 0,
+			"courage": 0,
+			"luck": 0
+		}
+	},
+	"2": {
+		"name": "Texocotl",
+		"type": "Consumable",
+		"cost": "30",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 2,
+			"courage": 0,
+			"luck": 0
+	},
+		"3": {
+		"name": "Texocotl",
+		"type": "Consumable",
+		"cost": "30",
+		"perks": {
+			"hp": 0,
+			"dmgmod": 0,
+			"speed": 2,
+			"courage": 0,
+			"luck": 0
+	},
