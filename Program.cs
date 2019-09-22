@@ -1,10 +1,11 @@
 ﻿namespace the_aztec_game
 {
-    class Program
+  class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            Game game = new Game();
-        }
+      Game game = new Game();
+      game.start();
     }
+  }
 }

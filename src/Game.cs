@@ -15,6 +15,10 @@ namespace the_aztec_game
       public Game()
       {
          initAll();
+      }
+
+      public void start() 
+      {
          typewriterStyleOutput("What is your player's name?: ");
          string name = Console.ReadLine();
 
@@ -975,8 +979,8 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
       private void initAll()
       {
          enemies = Initializers.initEnemies();
-         items = Initializers.initItems("items.json");
-         templeItems = Initializers.initItems("temple-items.json");
+         items = Initializers.initItems("resources/items.json");
+         templeItems = Initializers.initItems("resources/temple-items.json");
          templeMap = Initializers.initTempleMap(templeItems);
       }
    }
