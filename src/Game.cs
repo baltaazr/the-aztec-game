@@ -1,5 +1,7 @@
 using System;
+using System.Drawing;
 using System.Collections.Generic;
+using Console = Colorful.Console;
 
 namespace the_aztec_game
 {
@@ -20,6 +22,7 @@ namespace the_aztec_game
     public void start()
     {
       Console.Clear();
+      Console.WriteAscii("THE AZTEC GAME", Color.FromArgb(234, 84, 85));
       typewriterStyleOutput("What is your player's name?: ");
       string name = Console.ReadLine();
 
