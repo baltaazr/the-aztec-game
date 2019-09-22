@@ -1,8 +1,8 @@
 {
   "0": {
     "name": "(Boss) Xolotl",
-    "description": "",
-    "hp":  450,
+    "description": "Giant creature that wants nothing but your soul.",
+    "hp": 450,
     "damage": 30,
     "speed": 20,
     "courage": 30,
