@@ -45,7 +45,7 @@ Because of your great skills as a football player, you are given 5 extra points 
 Character Points: 200
 {0}
 There are four categories to place your character points: Health, Damage, Speed, Courage, and Luck.
-", player.getStringStats()));
+", player.getStringStats()), "stats");
 
       typewriterStyleOutput(@"
 Every character point added to health adds 1 health point. 
@@ -83,7 +83,7 @@ How many character points would you like to spend on luck?: ");
       player.stats["luck"] += cpl * 0.5;
       player.stats["hp"] += characterPoints;
 
-      typewriterStyleOutput(string.Format("\n{0}\n", player.getStringStats()));
+      typewriterStyleOutput(string.Format("\n{0}\n", player.getStringStats()), "stats");
       typewriterStyleOutput(string.Format(@"
 It is the year 1952, you have convinced a private American company that goes by the name
 “Dart” to fund you for a trip to Mexico to investigate a mysterious aztec ruin that you saw in a
@@ -135,21 +135,20 @@ You have entered the center of the temple. All of a sudden, your surroundings li
 everything is set ablaze. You have no way out and fear ripples throughout you.
 ");
       Console.Read();
-      int drumtime = 1500;
 
       Console.WriteLine("\nBOOM BOOM");
-      System.Threading.Thread.Sleep(drumtime);
+      System.Threading.Thread.Sleep(Configs.DRUM_DELAY);
 
-      typewriterStyleOutput("\nYou begin to hear beats of drums.\n ");
-      System.Threading.Thread.Sleep(drumtime);
+      typewriterStyleOutput("\nYou begin to hear beats of drums.\n");
+      System.Threading.Thread.Sleep(Configs.DRUM_DELAY);
 
       Console.WriteLine("\nBOOM BOOM");
-      System.Threading.Thread.Sleep(drumtime);
+      System.Threading.Thread.Sleep(Configs.DRUM_DELAY);
 
       typewriterStyleOutput(@"
 They appear to be getting louder.
 ");
-      System.Threading.Thread.Sleep(drumtime);
+      System.Threading.Thread.Sleep(Configs.DRUM_DELAY);
 
       typewriterStyleOutput(@"
 
@@ -163,7 +162,7 @@ Suddenly, it all becomes quiet.");
 
 Then you hear a voice speaking a mysterious language calling
 to you and an insane laughter. The voices get louder and louder until… ");
-      System.Threading.Thread.Sleep(4000);
+      System.Threading.Thread.Sleep(Configs.RING_DELAY);
       Console.WriteLine("\nRING!!!");
 
       typewriterStyleOutput(@"
@@ -199,76 +198,75 @@ a house of one of the locals, a man named Juan Perez greets you.
 ");
 
       Console.ReadLine();
-      int jpconvo1 = 3000;
       typewriterStyleOutput(string.Format(@"
 
 You : My name is {0}, a {1} from America.
 ", player.name, player.occupation));
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(string.Format(@"
 
    Juan Perez : Hello, {0}, that is a nice job, my niece works as a {1}
    too. So, what brings you here?            
 ", player.name, player.occupation));
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
 You (Thinking about your debt to the Chicago Outfit) : I… I am here to find the ruins of the
 nearby Aztec temple.            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
    Juan Perez : How do you know of this temple? Only few people outside of this town knows of it.
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"            
 
 You : I had a dream that I will find it here.            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
    Juan Perez : It is interesting that you know of this ruin, but
    if you were to explore it, beware of the tecuanitin of the jungle.            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"            
 
 You : If you already know of the ruin, why haven’t you explored it yet?            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
    Juan Perez : Because of local legends surrounding the place.            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
 You : Alright.            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
    Juan Perez : Wait… Eat this herb, it will help you against the mosquitos            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"            
 
    You took the herb from Juan Perez and ate it, it was slightly bitter, but it was okay. You felt
    slightly dizzy, but it was short lasting.            
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"          
 
 You : How do I get there?               
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(@"
 
    Juan Perez : Remember this sequence : you go North, North, East, East, South, than West.
 ");
-      System.Threading.Thread.Sleep(jpconvo1);
+      System.Threading.Thread.Sleep(Configs.JP_CONVO_DELAY);
       typewriterStyleOutput(string.Format(@"
 
 You, thinking to yourself : Ok. I hope I remember. Although my job as a {1} did
@@ -293,19 +291,18 @@ for jungle exploration, from a place called Las cosas de Daniel.
 
       if (storeChoice.Equals("1"))
       {
-        int danconvo1 = 2000;
         typewriterStyleOutput(@"
 You walk over to the store for the tools you need.");
-        System.Threading.Thread.Sleep(danconvo1);
+        System.Threading.Thread.Sleep(Configs.DAN_CONVO_DELAY);
         typewriterStyleOutput(@"
 
 Daniel: Hola! Who are you ?");
-        System.Threading.Thread.Sleep(danconvo1);
+        System.Threading.Thread.Sleep(Configs.DAN_CONVO_DELAY);
         typewriterStyleOutput(string.Format(@" 
 
    You : My name is {0}, I want equipments for exploring the nearby ancient temple.
  ", player.name));
-        System.Threading.Thread.Sleep(danconvo1);
+        System.Threading.Thread.Sleep(Configs.DAN_CONVO_DELAY);
         typewriterStyleOutput(@" 
 Daniel: Sure. Here are some things you could buy.
 
@@ -324,7 +321,7 @@ your debt. You say goodbye to Juan Perez {0} and head to
 your jeep. You close the car door and continue on your way into the jungle. With the somewhat
 vague instructions Juan Perez has given you, you follow his directions.
 What were the direcitons?
-(Type N for North, S for South, etc. Add spacing between each direction)", storeChoice == "1" ? "and Daniel" : ""));
+(Type N for North, S for South, etc. Add spacing between each direction): ", storeChoice == "1" ? "and Daniel" : ""));
       while (Console.ReadLine().ToUpper() != "N N E E S W")
       {
         player.stats["hp"] -= 5;
@@ -340,7 +337,7 @@ You're health now is {0}. Enter in the correct directions!!
         }
       }
       typewriterStyleOutput(@"
-You finally arrived at the spot and got off your jeep.It was all so familiar, the trees, the rocks,
+You finally arrived at the spot and got off your jeep. It was all so familiar, the trees, the rocks,
 just like in your dream. There stood the gaping mouth of the gold temple, its dark mouth
 opened wide.Vines covered the rest of the walls, leaving shiny flecks of gold showing between
 the wood.");
@@ -372,7 +369,7 @@ What do you respond?
         typewriterStyleOutput(string.Format(@"
                 
 A laugh vibrates through the chambers. But instead of feeling a chill down your spine, you
-suddenly gain the urge to laugh along with the voice.You gained two points to Courage.
+suddenly gain the urge to laugh along with the voice. You gained two points to Courage.
 Current Courage stats: {0}", player.stats["courage"]), "stats");
       }
       typewriterStyleOutput(Configs.INSTRUCTIONS);
@@ -435,7 +432,7 @@ Do you wish to equip this armor in place of your currently equipped armor?
 {0}                        
 Values in parantheses are from your current armor equipped.
 
-", player.getStringStats()));
+", player.getStringStats()), "stats");
             break;
           case "d":
             typewriterStyleOutput(string.Format(@"{0}
@@ -500,69 +497,68 @@ Press <e> if you don't want to pick up any item.
 
 
 
-      /*typewriterStyleOutput(@"
+      typewriterStyleOutput(@"
 
 Xolotl, falls to the ground, dying.
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
 You realize there is something off about Xolotl, as if it wasn’t actually a god. Huh.         
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
 You realize that it was just a costume. You grab the dog mask and pull it off, revealing Juan Perez’s face.                 
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
 You: What. You. Why did you do it?
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
 
 Juan: I want all this gold for myself. I heard you were coming to find it, I gave you that hallucinogentic herbs.
 I then sent you here so I could kill you and take all your money away from everyone else. HAHAHAHAHAAHHhahah.
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
 You: That seems uneccassarily complicated.
-      ");
+");
       Console.Read();
       typewriterStyleOutput(string.Format(@"      
 
 Juan: I need my money too, {0}.     
-      ", player.name));
+", player.name));
       Console.Read();
       typewriterStyleOutput(@"
 
 Juan lays still until he breathes his last breath.  
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
 You get up and walk out the temple, baffled. The sun never looked so bright in your life.         
-      ");
+");
       Console.Read();
       typewriterStyleOutput(@"
 
-
-       |
-       |   .
-`.  *  |     .'
-  `. ._|_* .'  .
-. * .'   `.  *
+          |
+          |   .
+   `.  *  |     .'
+     `. ._|_* .'  .
+   . * .'   `.  *
 -------|     |-------
-.  *`.___.' *  .
-   .'  |* `.  *
- .' *  |  . `.
-     . |
-       | 
+   .  *`.___.' *  .
+      .'  |* `.  *
+    .' *  |  . `.
+        . |
+          | 
 
-      ");
+");
       Console.Read();
 
       typewriterStyleOutput(@"
@@ -611,44 +607,44 @@ You: I-I have {0}.
       Console.Read();
       if (player.cash > 5000)
       {
-         typewriterStyleOutput(@"
+        typewriterStyleOutput(@"
 
 You: We can talk this out. Haha.
 ");
-         Console.Read();
-         typewriterStyleOutput(string.Format(@"
+        Console.Read();
+        typewriterStyleOutput(string.Format(@"
 
 Joe: G’ol’night {0}.
 ", player.name));
-         Console.Read();
-         typewriterStyleOutput(@"
+        Console.Read();
+        typewriterStyleOutput(@"
 
 Joe and the other guy point their guns at you and press the trigger.
 ");
-         Console.Read();
+        Console.Read();
       }
       else
       {
-         typewriterStyleOutput(@"
+        typewriterStyleOutput(@"
 
 Joe: Han’em’in. Ya slinky dip.
 ");
-         Console.Read();
-         typewriterStyleOutput(@"
+        Console.Read();
+        typewriterStyleOutput(@"
 
 You give over 5000 to them, happily to be free from your debt.
 ");
-         Console.Read();
-         typewriterStyleOutput(string.Format(@"
+        Console.Read();
+        typewriterStyleOutput(string.Format(@"
 
 Joe: Ya ain’t dying today, huh, {0}.
 ", player.name));
-         Console.Read();
-         typewriterStyleOutput(@"
+        Console.Read();
+        typewriterStyleOutput(@"
 
 They both walk out the door, leaving you with a big sense of joy.
 ");
-         Console.Read();
+        Console.Read();
       }
       typewriterStyleOutput(@"
 
@@ -658,7 +654,7 @@ The End.
       typewriterStyleOutput(@"
 
 Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthorn, Ian Huang, and Min Lee. 
-");*/
+");
     }
 
 
@@ -735,7 +731,7 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
       /* -------------------------------------------------------------------------- */
       /*                                   ENEMIES                                  */
       /* -------------------------------------------------------------------------- */
-      if (player.currentRoom == templeMap[15])
+      if (player.templeRoomLoc == 15)
       {
         // FIGHT BOSS
         combat(enemies[0]);
@@ -754,7 +750,7 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
         bool isOutOfLuck = enemCheck < playerLuck;
         double monsterVal = isOutOfLuck ? Math.Round(Helpers.GetRandomNumber(0, 2)) : Math.Round(Helpers.GetRandomNumber(0, 7));
 
-        int[] ENEMY_D = new int[0];
+        int[] ENEMY_D = new int[] { };
         if (isOutOfLuck)
         {
           if (monsterVal == 0) ENEMY_D = Configs.ENEMY_DIFFICULTY[1];
@@ -788,7 +784,7 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
                Cost {1} pesos
                {2}
 
-                              ", item.name, item.cost, item.getStringStats(), index));
+", item.name, item.cost, item.getStringStats(), index));
         index++;
       }
     }
@@ -812,7 +808,7 @@ You bought:
             player.inventory.Add(item);
             typewriterStyleOutput(string.Format(@"
    {0}
-                  ", purchasedItemName));
+", purchasedItemName));
           }
       }
     }
@@ -1017,7 +1013,7 @@ Shortly after, you woke up realizing you had lost {0}.
         if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
         else
         {
-          typewriterStyleOutput(errorMessage);
+          typewriterStyleOutput(errorMessage, "error");
           if (shouldBreak) Console.WriteLine();
         }
       }
@@ -1036,8 +1032,8 @@ Shortly after, you woke up realizing you had lost {0}.
         }
         catch
         {
-          typewriterStyleOutput(errorMessage);
-          Console.WriteLine();
+          typewriterStyleOutput(errorMessage, "error");
+          // Console.WriteLine();
           continue;
         }
 
@@ -1051,6 +1047,9 @@ Shortly after, you woke up realizing you had lost {0}.
       {
         switch (type)
         {
+          case "error":
+            Console.Write(message[i], Color.Red);
+            break;
           case "enemy":
             Console.Write(message[i], Color.FromArgb(255, 80, 47));
             break;
