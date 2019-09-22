@@ -19,6 +19,7 @@ namespace the_aztec_game
 
     public void start()
     {
+      Console.Clear();
       typewriterStyleOutput("What is your player's name?: ");
       string name = Console.ReadLine();
 
@@ -371,18 +372,16 @@ A laugh vibrates through the chambers. But instead of feeling a chill down your 
 suddenly gain the urge to laugh along with the voice.You gained two points to Courage.
 Current Courage stats: {0}", player.stats["courage"]));
       }
-      typewriterStyleOutput(@"
-            
-You can move around the temple using the <n, s, e and w> key, each key moving you north, south
-east and west respectively. You can also type <i> to check your inventory, <st> to check your stats,
-<d> to get a description of the room and <l> to look around the room.
-");
+      typewriterStyleOutput(Configs.INSTRUCTIONS);
+      // You can move around the temple using the <n, s, e and w> key, each key moving you north, south
+      // east and west respectively. You can also type <i> to check your inventory, <st> to check your stats,
+      // <d> to get a description of the room and <l> to look around the room.
 
       player.templeRoomLoc = 1;
       player.currentRoom = templeMap[player.templeRoomLoc];
       while (player.templeRoomLoc != 16)
       {
-        string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l" });
+        string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l", "help" }, true);
         switch (templeInput)
         {
           case "i":
@@ -400,13 +399,15 @@ or <e> to exit the inventory menu.
               string inventoryInput = waitForInput(inventoryOptions);
               if (inventoryInput == "e")
               {
+                Console.WriteLine();
                 break;
               }
 
               Item itemSelected = player.inventory[Int32.Parse(inventoryInput) - 1];
               typewriterStyleOutput(string.Format(@"
                         
-{0}: {1}", itemSelected.name, itemSelected.getStringStats()));
+{0}: {1}
+", itemSelected.name, itemSelected.getStringStats()));
               if (itemSelected is Armor)
               {
                 typewriterStyleOutput(@"
@@ -421,52 +422,68 @@ Do you wish to equip this armor in place of your currently equipped armor?
               }
             }
             break;
+          case "help":
+            typewriterStyleOutput(Configs.INSTRUCTIONS);
+
+            break;
           case "st":
             typewriterStyleOutput(string.Format(@"
 
 {0}                        
-Values in parantheses are from your current armor equipped", player.getStringStats()));
+Values in parantheses are from your current armor equipped.
+
+", player.getStringStats()));
             break;
           case "d":
-            typewriterStyleOutput(string.Format(@"
-
-{0}", player.currentRoom.description));
+            typewriterStyleOutput(string.Format(@"{0}
+", player.currentRoom.description));
             break;
           case "l":
             if (player.currentRoom.items.Count == 0)
             {
-              typewriterStyleOutput(@"
-                            
-You look around the room and appear to find nothing of value.");
+              typewriterStyleOutput(@"You look around the room and appear to find nothing of value.
+");
             }
             else
             {
               (string itemsString, string[] itemsOption) = player.currentRoom.getStringItems();
               typewriterStyleOutput(string.Format(@"
-                            
 You look around the room and appear to find:
 {0}
-You grab the money. To pick up all the items, press <a>.
-Or press the number next to specific item you want to pick up.
-Press e if you don't want to pick up any item.", itemsString));
+You grab the money. 
+
+To pick up all the items, press <a>
+You can also press the number next to specific item you want to pick up.
+Press <e> if you don't want to pick up any item.
+", itemsString));
               player.cash += player.currentRoom.cash;
               player.currentRoom.cash = 0;
 
               string itemsInput = waitForInput(itemsOption);
               if (itemsInput == "e")
               {
+                Console.Write(@"You didn't pick up anything.
+
+");
                 break;
               }
               else if (itemsInput == "a")
               {
+                Console.Write(@"You picked up everything.
+
+");
                 player.inventory.AddRange(player.currentRoom.items);
                 player.currentRoom.items = new List<Item>();
                 break;
               }
 
-              Item itemSelectedRoom = player.currentRoom.items[Int32.Parse(itemsInput) - 1];
+              int key = Int32.Parse(itemsInput) - 1;
+              Item itemSelectedRoom = player.currentRoom.items[key];
               player.inventory.Add(itemSelectedRoom);
-              player.currentRoom.items.RemoveAt(Int32.Parse(itemsInput) - 1);
+              player.currentRoom.items.RemoveAt(key);
+              Console.Write(string.Format(@"You picked up:
+  {0}
+", itemSelectedRoom.name));
               break;
             }
             break;
@@ -645,60 +662,102 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
     private void moveRoom(string dir)
     {
       double enemAppearVal = Helpers.GetRandomNumber();
-      bool shouldEnemy = enemAppearVal > 0.5;
+      bool enemyAppeared = enemAppearVal > 0.5;
+
+      if (enemyAppeared)
+      {
+        double playerLuck = player.equippedArmor.getPerks()["luck"];
+
+        double enemCheck = Math.Round(Helpers.GetRandomNumber() * 100);
+        bool isOutOfLuck = enemCheck < playerLuck;
+        double monsterVal = isOutOfLuck ? Math.Round(Helpers.GetRandomNumber(0, 2)) : Math.Round(Helpers.GetRandomNumber(0, 7));
+
+        int[] ENEMY_D = new int[0];
+        if (isOutOfLuck)
+        {
+          if (monsterVal == 0) ENEMY_D = Configs.ENEMY_DIFFICULTY[1];
+          else if (monsterVal == 1 || monsterVal == 2) ENEMY_D = Configs.ENEMY_DIFFICULTY[2];
+        }
+        else
+        {
+          if (monsterVal >= 0 && monsterVal <= 4) ENEMY_D = Configs.ENEMY_DIFFICULTY[3];
+          else if (monsterVal >= 5 && monsterVal <= 6) ENEMY_D = Configs.ENEMY_DIFFICULTY[4];
+          else ENEMY_D = Configs.ENEMY_DIFFICULTY[6];
+        }
+
+        int enemyLength = ENEMY_D.Length;
+        if (enemyLength > 0)
+        {
+          int enemyIndex = Convert.ToInt32(Helpers.GetRandomNumber(0, enemyLength));
+          Enemy enemy = enemies[enemyIndex];
+          combat(enemy);
+        }
+      }
 
       switch (dir)
       {
         case "n":
           if (player.currentRoom.n.deadEnd)
           {
-            typewriterStyleOutput(@"
+            typewriterStyleOutput(@"That way is a dead end.
 
-That way is a dead end");
+");
             break;
           }
           else
           {
             player.currentRoom = player.currentRoom.n;
+            typewriterStyleOutput(@"You moved north.
+
+");
           }
           break;
         case "s":
           if (player.currentRoom.s.deadEnd)
           {
-            typewriterStyleOutput(@"
+            typewriterStyleOutput(@"That way is a dead end.
 
-That way is a dead end");
+");
             break;
           }
           else
           {
             player.currentRoom = player.currentRoom.s;
+            typewriterStyleOutput(@"You moved south.
+
+");
           }
           break;
         case "e":
           if (player.currentRoom.e.deadEnd)
           {
-            typewriterStyleOutput(@"
+            typewriterStyleOutput(@"That way is a dead end.
 
-That way is a dead end");
+");
             break;
           }
           else
           {
             player.currentRoom = player.currentRoom.e;
+            typewriterStyleOutput(@"You moved east.
+
+");
           }
           break;
         case "w":
           if (player.currentRoom.w.deadEnd)
           {
-            typewriterStyleOutput(@"
+            typewriterStyleOutput(@"That way is a dead end.
 
-That way is a dead end");
+");
             break;
           }
           else
           {
             player.currentRoom = player.currentRoom.w;
+            typewriterStyleOutput(@"You moved west.
+
+");
           }
           break;
       }
@@ -936,13 +995,18 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
 ", player.cash > 2000 ? "2000 pesos" : "all your money"));
       player.unconscious();
     }
-    private string waitForInput(string[] possibleAnswers, string errorMessage = "That wasn't a valid choice.\n")
+    private string waitForInput(string[] possibleAnswers, bool shouldBreak = false, string errorMessage = "That wasn't a valid choice. Try again?\n", string prefix = ": ")
     {
       while (true)
       {
+        Console.Write(prefix);
         string input = Console.ReadLine();
         if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
-        else typewriterStyleOutput(errorMessage);
+        else
+        {
+          typewriterStyleOutput(errorMessage);
+          if (shouldBreak) Console.WriteLine();
+        }
       }
     }
 
@@ -960,6 +1024,7 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
         catch
         {
           typewriterStyleOutput(errorMessage);
+          Console.WriteLine();
           continue;
         }
 
