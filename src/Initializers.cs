@@ -55,7 +55,7 @@ namespace the_aztec_game
     public static List<Enemy> initEnemies()
     {
       List<Enemy> enemies = new List<Enemy>();
-      using (StreamReader r = new StreamReader("resources/monsters.json"))
+      using (StreamReader r = new StreamReader("resources/enemies.json"))
       {
         string json = r.ReadToEnd();
         Dictionary<string, dynamic> jsonMonsters = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
