@@ -68,7 +68,7 @@
 		"type": "Consumable",
 		"cost": "100",
 		"perks": {
-			"hp": 70,
+			"hp": 60,
 			"dmgmod": 0,
 			"speed": 0,
 			"courage": 0,
@@ -81,7 +81,7 @@
 		"type": "Armor",
 		"cost": "800",
 		"perks": {
-			"hp": 1000,
+			"hp": 500,
 			"dmgmod": 0,
 			"speed": 0,
 			"courage": 0,
