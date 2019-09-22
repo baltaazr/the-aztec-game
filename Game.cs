@@ -380,7 +380,7 @@ east and west respectively. You can also type <i> to check your inventory, <st> 
 ");
 
          initEnemies();
-         initItems("temple-items.json", templeItems);
+         //initItems("temple-items.json", templeItems);
          initTempleMap();
 
          player.templeRoomLoc = 1;
@@ -480,6 +480,53 @@ Press e if you don't want to pick up any item.", itemsString));
                   break;
             }
          }
+         typewriterStyleOutput(@"
+
+Xolotl, falls to the ground, dying.
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+
+You realize there is something off about Xolotl, as if it wasn’t actually a god. Huh.         
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+
+You realize that it was just a costume. You grab the dog mask and pull it off, revealing Juan Perez’s face.                 
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+
+You: What. You. Why did you do it?
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+      
+
+   Juan: I want all this gold for myself. I heard you were coming to find it, I gave you that hallucinogentic herbs.
+   I then sent you here so I could kill you and take all your money away from everyone else. HAHAHAHAHAAHHhahah.
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+      
+You: That seems uneccassarily complicated.
+         ");
+         Console.Read();
+         typewriterStyleOutput(string.Format(@"      
+
+   Juan: I need my money too, {0}.     
+         ", player.name));
+         Console.Read();
+         typewriterStyleOutput(@"
+
+Juan lays still until he breathes his last breath.  
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+
+You get up and walk out the temple, baffled. The sun never looked so bright in your life.         
+         ");
+         Console.Read();
       }
 
 
