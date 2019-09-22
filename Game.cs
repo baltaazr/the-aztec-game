@@ -544,40 +544,95 @@ You get up and walk out the temple, baffled. The sun never looked so bright in y
 You fly back to Chicago two days later. It was a long flight, but you finally get home to your apartment at 7:00 PM, 
 exhausted from your journey. 
 ");
+         Console.Read();
          typewriterStyleOutput(string.Format(@"
 
 You quickly go to sleep after gobbling down a cheese burger. When you wake up from the next morning, 
 you look at all the money you brought back after trading the gold for pesos, a grand total of {1}
  – way more than you could get in a four year’s work as a {0}. 
 ", player.occupation, player.cash));
+         Console.Read();
          typewriterStyleOutput(@"
 
 The doorbell rings. You open the door.");
+         Console.Read();
          typewriterStyleOutput(@"
 
 Two guys stand in front holding a thompson machine gun. Woah. Surprise. 
 
 They are both from the Chicago Outfit. One of the guys you recognize is called Joe Baloney.
 ");
+         Console.Read();
          typewriterStyleOutput(string.Format(@"
 
 Joe: Heard ya’s back. You betta be {0}?
 ", player.name));
+         Console.Read();
          typewriterStyleOutput(@"
 
    You: Yas.
 ");
+         Console.Read();
          typewriterStyleOutput(@"
 
-Joe: Do you have more than 30000?
+Joe: Do you have more than 5000?
 ");
+         Console.Read();
          typewriterStyleOutput(string.Format(@"
 
 You: I-I have {0}.
+", player.cash));
+         Console.Read();
+         if (player.cash > 5000)
+         {
+            typewriterStyleOutput(@"
 
-", player.cash));*/
+You: We can talk this out. Haha.
+");
+            Console.Read();
+            typewriterStyleOutput(string.Format(@"
 
+   Joe: G’ol’night {0}.
+", player.name));
+            Console.Read();
+            typewriterStyleOutput(@"
 
+Joe and the other guy point their guns at you and press the trigger.
+");
+            Console.Read();
+         }
+         else
+         {
+            typewriterStyleOutput(@"
+
+   Joe: Han’em’in. Ya slinky dip.
+");
+            Console.Read();
+            typewriterStyleOutput(@"
+
+You give over 5000 to them, happily to be free from your debt.
+");
+            Console.Read();
+            typewriterStyleOutput(string.Format(@"
+
+Joe: Ya ain’t dying today, huh, {0}.
+", player.name));
+            Console.Read();
+            typewriterStyleOutput(@"
+
+They both walk out the door, leaving you with a big sense of joy.
+");
+            Console.Read();
+         }
+         typewriterStyleOutput(@"
+
+The End. 
+");
+         Console.Read();
+         typewriterStyleOutput(@"
+
+Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthorn, Ian Huang, and Min Lee. 
+");*/
       }
 
 
