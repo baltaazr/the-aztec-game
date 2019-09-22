@@ -25,6 +25,7 @@ namespace the_aztec_game
                 items = new List<Item>();
                 cash = 0;
                 description = "";
+                deadEnd = deadEndRoom;
             }
             deadEnd = deadEndRoom;
         }
