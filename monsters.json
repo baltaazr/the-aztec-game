@@ -5,7 +5,8 @@
     "hp":  450,
     "damage": 30,
     "speed": 20,
-    "courage": 30
+    "courage": 30,
+    "image": 
   },
   "1": {
     "name": "The Cihuateteo",
@@ -13,7 +14,8 @@
     "hp": 180,
     "damage": 20,
     "speed": 20,
-    "courage": 20
+    "courage": 20,
+    "image": 
   },
   "2": {
     "name": "Centzon Totochtin",
@@ -21,7 +23,8 @@
     "hp": 20,
     "damage": 5,
     "speed": 50,
-    "courage": 0
+    "courage": 0,
+    "image": 
   },
   "3": {
     "name": "Big Axolotl",
@@ -29,7 +32,8 @@
     "hp": 40,
     "damage": 1,
     "speed": 10,
-    "courage": 20
+    "courage": 20,
+    "image": "->(o-o)<-"
   },
   "4": {
     "name": "Giant Axolotl",
@@ -37,7 +41,8 @@
     "hp": 150,
     "damage": 3,
     "speed": 12,
-    "courage": 20
+    "courage": 20,
+    "image": "-->(0  -  0)<--"
   },
   "5": {
     "name": "Yahui",
@@ -45,7 +50,8 @@
     "hp": 90,
     "damage": 20,
     "speed": 5,
-    "courage": 5
+    "courage": 5,
+    "image": ""
   },
   "6": {
     "name": "Ceuyatl",
@@ -53,7 +59,8 @@
     "hp": 40,
     "damage": 8,
     "speed": 40,
-    "courage": 10
+    "courage": 10,
+    "image": ""
   },
   "7": {
     "name": "Mega Axolotl",
@@ -61,7 +68,8 @@
     "hp": 400,
     "damage": 8,
     "speed": 12,
-    "courage": 20
+    "courage": 20,
+    "image": "---           ---\n  ---(0  -  0)---\n---           ---"
   },
   "8": {
     "name": "Ahuizotl",
@@ -69,7 +77,8 @@
     "hp": 30,
     "damage": 7,
     "speed": 70,
-    "courage": 20
+    "courage": 20,
+    "image": ""
   },
   "9": {
     "name": "Cipatli",
@@ -77,7 +86,8 @@
     "hp": 60,
     "damage": 25,
     "speed": 10,
-    "courage": 10
+    "courage": 10,
+    "image": ""
   },
   "10": {
     "name": "Vampyrum Spectrum",
@@ -85,6 +95,7 @@
     "hp": 20,
     "damage": 10,
     "speed": 55,
-    "courage": 50
+    "courage": 50,
+    "image": ""
   }
 }
