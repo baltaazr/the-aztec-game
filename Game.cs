@@ -11,6 +11,8 @@ namespace the_aztec_game
       private Player player;
       private List<Item> items = new List<Item>();
 
+      private List<Item> templeItems = new List<Item>();
+
       private List<Enemy> enemies = new List<Enemy>();
 
       public Game()
@@ -23,7 +25,7 @@ namespace the_aztec_game
 
          player = new Player(name, occupation);
 
-         int characterPoints = 200;
+         /*int characterPoints = 200;
 
          if (player.occupation.ToLower() == "soccer player" || player.occupation.ToLower() == "football player")
          {
@@ -266,7 +268,7 @@ You : How do I get there?
 You, thinking to yourself : Ok. I hope I remember. Although my job as a {1} did
 not prepare me for this.
 ", player.name, player.occupation));
-         Console.Read();
+         Console.Read();*/
          typewriterStyleOutput(@"
 
 You walked away before seeing a small store that sold equipments
@@ -280,6 +282,7 @@ for jungle exploration, from a place called Las cosas de Daniel.
 
       2 : Ehhh… I don’ t need Daniel’s slimy tools.
 ");
+         initItems("items.json", items);
 
          string storeChoice = waitForInput(new string[] { "1", "2" });
 
@@ -305,7 +308,6 @@ Daniel brings out some things from a shack behind the house.
 
 ");
 
-            initItems();
             showItems();
             purchaseItems();
             Console.Read();
@@ -318,9 +320,9 @@ your jeep. You close the car door and continue on your way into the jungle. With
 vague instructions Juan Perez has given you, you follow his directions.
 What were the direcitons?
 (Type N for North, S for South, etc. Add spacing between each direction)", storeChoice == "1" ? "and Daniel" : ""));
-         string answerDirections = Console.ReadLine();
+         string answerDirections = Console.ReadLine().Trim();
          if (!answerDirections.Equals("N N E E S W"))
-            while (!Console.ReadLine().ToUpper().Equals("N N E E S W"))
+            while (!Console.ReadLine().ToUpper().Trim().Equals("N N E E S W"))
             {
                player.stats["hp"] -= 5;
                typewriterStyleOutput(string.Format(@"
@@ -361,7 +363,7 @@ Who Dares Enter the temple…
 What do you respond?
 ");
 
-         if (Console.ReadLine().ToLower() == "i do")
+         if (Console.ReadLine().ToLower().Trim() == "i do")
          {
             player.stats["courage"] += 2;
             typewriterStyleOutput(string.Format(@"
@@ -378,14 +380,14 @@ east and west respectively. You can also type <i> to check your inventory, <st> 
 ");
 
          initEnemies();
+         initItems("temple-items.json", templeItems);
          initTempleMap();
 
-         Console.WriteLine("heyyyyyyyyyyyyyyyy");
          player.templeRoomLoc = 1;
          while (player.templeRoomLoc != 16)
          {
             string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l" });
-            Room currentRoom = templeMap[player.templeRoomLoc];
+            player.currentRoom = templeMap[player.templeRoomLoc];
             switch (templeInput)
             {
                case "i":
@@ -481,9 +483,9 @@ Press e if you don't want to pick up any item.", itemsString));
       }
 
 
-      private void initItems()
+      private void initItems(string jsonFilename, List<Item> itemsList)
       {
-         using (StreamReader r = new StreamReader("items.json"))
+         using (StreamReader r = new StreamReader(jsonFilename))
          {
             string json = r.ReadToEnd();
             Dictionary<string, dynamic> jsonItems = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(json);
@@ -495,17 +497,17 @@ Press e if you don't want to pick up any item.", itemsString));
                {
                   case "Weapon":
                      Weapon weapon = new Weapon(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), Convert.ToDouble(Int32.Parse(itemValue.dmg.ToString())));
-                     items.Add(weapon);
+                     itemsList.Add(weapon);
                      break;
                   case "Armor":
                      Dictionary<string, double> armorPerks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
                      Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), armorPerks);
-                     items.Add(armor);
+                     itemsList.Add(armor);
                      break;
                   case "Consumable":
                      Dictionary<string, double> consumablePerks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
                      Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), consumablePerks);
-                     items.Add(consumable);
+                     itemsList.Add(consumable);
                      break;
                   default:
                      Console.WriteLine("Item initialization error");
@@ -702,7 +704,9 @@ Anything else? <Yes / No>
                templeMap[Int32.Parse(room.Key)].cash = Int32.Parse(room.Value.cash.ToString());
                for (int i = 0; i < room.Value.items.Count; i++)
                {
-                  templeMap[Int32.Parse(room.Key)].items.Add(items[room.Value.items[i]]);
+                  //Console.WriteLine(Int32.Parse(room.Value.items[i].ToString()));
+                  Console.WriteLine(items.Count);
+                  templeMap[Int32.Parse(room.Key)].items.Add(templeItems[Int32.Parse(room.Value.items[i].ToString())]);
                }
             }
 
@@ -863,7 +867,7 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
       {
          while (true)
          {
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().Trim();
             if (Array.Exists(possibleAnswers, ele => ele == input)) return input;
             else typewriterStyleOutput(errorMessage);
          }
@@ -873,7 +877,7 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
       {
          while (true)
          {
-            string input = Console.ReadLine();
+            string input = Console.ReadLine().Trim();
             int actualInt;
 
             try
