@@ -476,6 +476,8 @@ Press e if you don't want to pick up any item.", itemsString));
 
 
 
+
+
          /*typewriterStyleOutput(@"
 
 Xolotl, falls to the ground, dying.
@@ -980,59 +982,118 @@ You go unconscious, and you wake up shortly after. You realize you lost {0}.
    }
 }
 
+//Room 12 dialogue
 /*typewriterStyleOutput(@"
 
 You walk down the hall that was dimly lit by fire, which was odd, considering that the temple had been abandoned for centuries. 
 You feel dread crawl up your body as you slowly continue, as more paintings of a monstorus black dog in an aztec costume, covered the walls. 
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 You realize you should have brought friends and rethink this plan, but then again, aztec gods are only a myth, right? 
 ");
-Console.Read();
-typewriterStyleOutput(string.Format(@"
+         Console.Read();
+         typewriterStyleOutput(string.Format(@"
 
 Your years of studying and learning at Wilber Junior College to be a {0} proved that already. 
 Suddenly, you stop in your tracks. 
 ", player.occupation));
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 A giant humanoid black dog, just like the ones in the paintings, walk out from behind a pillar with an obsidian sword in hand. 
 
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 Timiqui, 
 The Dog man says as he walked forward towards you. 
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 You suddenly remember the name of the god from a book you read a few years ago. A black dog god called Xolotl. 
 There is no escaping, your only way out is to fight.
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 Xolotl runs toward you, swift as shadow, gliding across the stones. You step back, dropping your torch...
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 ...but before you can do anything you feel the black obsidian blade slide into your stomach like a hot knife through butter. 
 You feel as if the blade has drained your body of energy as you slide on the floor. 
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 The Aztec god stands in front of you for a second before rummaging through your bag for money. 
 ");
-Console.Read();
-typewriterStyleOutput(@"
+         Console.Read();
+         typewriterStyleOutput(@"
 
 You watch in silence as Xolotl takes all the gold and the rest of your cash before walking away.
 ");
-Console.Read();*/
+         Console.Read();
+
+         typewriterStyleOutput(@"
+
+You: Is this the end?
+         ");
+         Console.Read();
+
+         typewriterStyleOutput(@"
+
+You thought of the last words you want to say. What are they?
+         ");
+         string lastWords = Console.ReadLine();
+         typewriterStyleOutput(string.Format(@"
+
+You: {0}.
+         ", lastWords));
+         Console.Read();
+         typewriterStyleOutput(@"
+
+Just as you feel weaker, a small glowing light appear in front of you. 
+It turns into a fiery warmth that spreads through the dead cold temple. 
+The fire materializes into a red man with a glowing fire serpent on his back and feather tufts on each side. 
+         ");
+         Console.Read();
+         typewriterStyleOutput(string.Format(@"
+
+You: {0}. Who are you?
+         ", lastWords.ToUpper()));
+         Console.Read();
+         typewriterStyleOutput(@"
+
+The Red Man: I am Xiuhtecuhtli. And I will help just a wrong.
+         ");
+         Console.Read();
+         typewriterStyleOutput(@"
+
+He walks over and touches your forehead, giving you warmth throughout your body. You feel your wound heal itself and feel stronger than before. 
+         ");
+         Console.Read();
+         typewriterStyleOutput(string.Format(@"
+
+You increased your health by {0}
+You increased your Damage by {0}
+         ", (player.stats["hp"] / 2), (player.stats["dmgmod"] / 2)));
+         player.stats["hp"] *= 1.5;
+         player.stats["dmgmod"] *= 1.5;
+
+         typewriterStyleOutput(string.Format(@"
+
+{2}
+         ", player.getStringStats()));
+         Console.Read();
+         typewriterStyleOutput(@"
+
+You thank Xiuhtecuhtli, but he disappears mid-thank. You aren't sure what just happened, but you definitley feel re-energized.
+You can go forwards or backwards. Where will you go?
+         ");
+         Console.Read(); */
