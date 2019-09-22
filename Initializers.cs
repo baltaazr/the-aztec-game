@@ -7,7 +7,7 @@ namespace the_aztec_game
 {
     class Initializers
     {
-        public static Room[] initTempleMap()
+        public static Room[] initTempleMap(List<Item> items)
         {
             Room[] templeMap = new Room[17];
             using (StreamReader r = new StreamReader("map.json"))
