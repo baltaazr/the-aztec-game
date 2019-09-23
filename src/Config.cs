@@ -5,17 +5,17 @@ namespace the_aztec_game
 {
   class Configs
   {
-    // public const int PRINT_DELAY = 20; // ms 
-    public const int PRINT_DELAY = 1; // ms 
+    public const int PRINT_DELAY = 20; // ms 
+    // public const int PRINT_DELAY = 1; // ms 
     public const int DAMAGE_PRECISION = 2;
-    // public const int DRUM_DELAY = 1500; //  ms
-    public const int DRUM_DELAY = 1;
-    // public const int RING_DELAY = 4000; // ms
-    public const int RING_DELAY = 1;
-    // public const int JP_CONVO_DELAY = 3000;
-    public const int JP_CONVO_DELAY = 1;
-    // public const int DAN_CONVO_DELAY = 2000;
-    public const int DAN_CONVO_DELAY = 1;
+    public const int DRUM_DELAY = 1500; //  ms
+    // public const int DRUM_DELAY = 1;
+    public const int RING_DELAY = 4000; // ms
+    // public const int RING_DELAY = 1;
+    public const int JP_CONVO_DELAY = 3000;
+    // public const int JP_CONVO_DELAY = 1;
+    public const int DAN_CONVO_DELAY = 2000;
+    // public const int DAN_CONVO_DELAY = 1;
 
     public const string INSTRUCTIONS = @"
             
