@@ -1,0 +1,101 @@
+{
+  "0": {
+    "name": "(Boss) Xolotl",
+    "description": "",
+    "hp":  450,
+    "damage": 30,
+    "speed": 20,
+    "courage": 30,
+    "image": ""
+  },
+  "1": {
+    "name": "The Cihuateteo",
+    "description": "A female spirit warrior who died of childbirth.",
+    "hp": 180,
+    "damage": 20,
+    "speed": 20,
+    "courage": 20,
+    "image": ""
+  },
+  "2": {
+    "name": "Centzon Totochtin",
+    "description": "An aggressive mystical rabbit has appeared.",
+    "hp": 20,
+    "damage": 5,
+    "speed": 50,
+    "courage": 0,
+    "image": ""
+  },
+  "3": {
+    "name": "Big Axolotl",
+    "description": "A pale dog sized amphibian with gills.",
+    "hp": 40,
+    "damage": 1,
+    "speed": 10,
+    "courage": 20,
+    "image": "->(o-o)<-"
+  },
+  "4": {
+    "name": "Giant Axolotl",
+    "description": "A pale porsche sized amphibian with gills.",
+    "hp": 150,
+    "damage": 3,
+    "speed": 12,
+    "courage": 20,
+    "image": "-->(0  -  0)<--"
+  },
+  "5": {
+    "name": "Yahui",
+    "description": "A giant reptillian creature with a turtle shell on its back and flint claws",
+    "hp": 90,
+    "damage": 20,
+    "speed": 5,
+    "courage": 5,
+    "image": ""
+  },
+  "6": {
+    "name": "Ceuyatl",
+    "description": "A big frog with a primitive stone knife.",
+    "hp": 40,
+    "damage": 8,
+    "speed": 40,
+    "courage": 10,
+    "image": ""
+  },
+  "7": {
+    "name": "Mega Axolotl",
+    "description": "A bus sized amphibian with gills.",
+    "hp": 400,
+    "damage": 8,
+    "speed": 12,
+    "courage": 20,
+    "image": "---           ---\n  ---(0  -  0)---\n---           ---"
+  },
+  "8": {
+    "name": "Ahuizotl",
+    "description": "A dog shaped creature with a clawed hand on its tail.",
+    "hp": 30,
+    "damage": 7,
+    "speed": 70,
+    "courage": 20,
+    "image": ""
+  },
+  "9": {
+    "name": "Cipatli",
+    "description": "A creature part crocodile, part fish, and part frog.",
+    "hp": 60,
+    "damage": 25,
+    "speed": 10,
+    "courage": 10,
+    "image": ""
+  },
+  "10": {
+    "name": "Vampyrum Spectrum",
+    "description": "A carnivorous bat.",
+    "hp": 20,
+    "damage": 10,
+    "speed": 55,
+    "courage": 50,
+    "image": ""
+  }
+}
