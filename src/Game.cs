@@ -377,9 +377,8 @@ Current Courage stats: {0}", player.stats["courage"]), "stats");
       // east and west respectively. You can also type <i> to check your inventory, <st> to check your stats,
       // <d> to get a description of the room and <l> to look around the room.
 
-      player.templeRoomLoc = 1;
-      player.currentRoom = templeMap[player.templeRoomLoc];
-      while (player.templeRoomLoc != 16)
+      player.currentRoom = templeMap[1];
+      while (player.currentRoom.index != 16)
       {
         string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l", "help" }, true);
         switch (templeInput)
@@ -597,7 +596,7 @@ You: Yas.
       Console.Read();
       typewriterStyleOutput(@"
 
-Joe: Do you have more than 5000?
+Joe: Do you have more than 30000?
 ");
       Console.Read();
       typewriterStyleOutput(string.Format(@"
@@ -605,7 +604,7 @@ Joe: Do you have more than 5000?
 You: I-I have {0}.
 ", player.cash));
       Console.Read();
-      if (player.cash > 5000)
+      if (player.cash > 30000)
       {
         typewriterStyleOutput(@"
 
@@ -632,7 +631,7 @@ Joe: Han’em’in. Ya slinky dip.
         Console.Read();
         typewriterStyleOutput(@"
 
-You give over 5000 to them, happily to be free from your debt.
+You give over 30000 to them, happily to be free from your debt.
 ");
         Console.Read();
         typewriterStyleOutput(string.Format(@"
@@ -731,7 +730,7 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
       /* -------------------------------------------------------------------------- */
       /*                                   ENEMIES                                  */
       /* -------------------------------------------------------------------------- */
-      if (player.templeRoomLoc == 15)
+      if (player.currentRoom.index == 15)
       {
         // FIGHT BOSS
         combat(enemies[0]);

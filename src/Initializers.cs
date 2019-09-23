@@ -24,6 +24,7 @@ namespace the_aztec_game
           templeMap[key] = new Room();
           templeMap[key].description = (room.Value.description.ToString());
           templeMap[key].cash = Int32.Parse(room.Value.cash.ToString());
+          templeMap[key].index = key;
           for (int i = 0; i < room.Value.items.Count; i++)
           {
             templeMap[key].items.Add(items.ToArray()[room.Value.items[i] - 1]);

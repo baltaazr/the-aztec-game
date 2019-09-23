@@ -14,6 +14,8 @@ namespace the_aztec_game
     public Room s { get; set; }
     public Room w { get; set; }
 
+    public int index { get; set; }
+
     public Room(bool deadEndRoom = false)
     {
       if (!deadEndRoom)
