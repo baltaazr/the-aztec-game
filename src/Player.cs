@@ -133,5 +133,16 @@ namespace the_aztec_game
     {
       equippedArmor = inventory[indexOfArmor];
     }
+
+    public void consumeConsumable(int indexOfConsumable)
+    {
+      Item consumable = inventory[indexOfConsumable];
+      inventory.RemoveAt(indexOfConsumable);
+      stats["hp"] += consumable.getPerks()["hp"];
+      stats["dmgmod"] += consumable.getPerks()["dmgmod"];
+      stats["speed"] += consumable.getPerks()["speed"];
+      stats["courage"] += consumable.getPerks()["courage"];
+      stats["luck"] += consumable.getPerks()["luck"];
+    }
   }
 }

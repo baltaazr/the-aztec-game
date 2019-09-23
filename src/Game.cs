@@ -419,6 +419,18 @@ Do you wish to equip this armor in place of your currently equipped armor?
                   player.equipArmor(Int32.Parse(inventoryInput) - 1);
                 }
               }
+              else if (itemSelected is Consumable)
+              {
+                typewriterStyleOutput(@"
+                            
+Do you wish to consume this item?
+<Yes / No>");
+                string consumableInput = waitForInput(new string[] { "Yes", "No" });
+                if (consumableInput == "Yes")
+                {
+                  player.consumeConsumable(Int32.Parse(inventoryInput) - 1);
+                }
+              }
             }
             break;
           case "help":
