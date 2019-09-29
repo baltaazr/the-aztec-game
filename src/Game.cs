@@ -955,9 +955,8 @@ Because of your speed, you're able to escape successfully.
 
 You're able to kill the enemy. Good job.
 ");
-                enemy.stats["hp"] = enemy.maxhp;
             }
-
+            enemy.stats["hp"] = enemy.maxhp;
         }
 
         private bool playerCombatTurn(ref Enemy enemy)
