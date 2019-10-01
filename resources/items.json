@@ -8,14 +8,16 @@
 			"dmgmod": 0,
 			"speed": 0,
 			"courage": 0,
-			"luck": 0
-		}
+			"luck": 0,
+		},
+		"image": "  (I)  (\/)(I)(\\)\r\n     (I)     (-)"	
 	},
 	"2": {
 		"name": "Shovel",
 		"type": "Weapon",
 		"cost": "400",
-		"dmg": 50
+		"dmg": 50,
+		"image:" " ____\r\n\/    \\\r\n|    |\r\n|____|\r\n  ||\r\n  ||\r\n  ||\r\n  ||\r\n  ||\r\n  ||\r\n  \/\\\r\n  --"
 	},
 	"3": {
 		"name": "Man United Jersey",
@@ -27,7 +29,8 @@
 			"speed": 30,
 			"courage": 0,
 			"luck": 0
-		}
+		},
+		"image": "   __   __\r\n \/|  `-\u00B4  |\\\r\n\/_|  Man  |_\\\r\n  | United|\r\n  |  ovo  |\r\n  |_______|"
 	},
 
 	"4": {
@@ -40,14 +43,17 @@
 			"speed": 0,
 			"courage": 0,
 			"luck": 0
-		}
+		},
+		"image": "  _____\r\n\/      \\\r\n|______|"
+
 	},
 
 	"5": {
 		"name": "Machete",
 		"type": "Weapon",
 		"cost": "550",
-		"dmg": 70
+		"dmg": 70,
+		"image": "     _______~~~~~~~~~~~~~~~~~~~~~~~~~*+\r\n    \\_______|_____                   )\r\n                  \\_________________\/"
 	},
 
 	"6": {
@@ -60,7 +66,8 @@
 			"speed": 0,
 			"courage": 25,
 			"luck": 0
-		}
+		},
+		"image": "             . . .                         \r\n              \\|\/                          \r\n            `--+--'                        \r\n              \/|\\                          \r\n             ' | '                         \r\n               |                           \r\n               | "
 	},
 
 	"7": {
@@ -73,7 +80,8 @@
 			"speed": 0,
 			"courage": 0,
 			"luck": 0
-		}
+		},
+		"image": "    _____\r\n   \/.---.\\\r\n   |=====|\r\n    _____\r\n"
 	},
 
 	"8": {
@@ -86,7 +94,8 @@
 			"speed": 0,
 			"courage": 0,
 			"luck": 0
-		}
+		},
+		"image": "  _   _\r\n ) '-' (\r\n| armor |\r\n|_______|\r\n|+  V  +|\r\n|___|___|"
 	},
 
 	"9": {
@@ -99,6 +108,7 @@
 			"speed": 2,
 			"courage": 0,
 			"luck": 0
-		}
+		},
+		"image": "_ \/_\r\n( `' )\r\n `~~'"
 	}
 }
