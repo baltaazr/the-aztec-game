@@ -9,7 +9,8 @@
       "speed": 0,
       "courage": 0,
       "luck": 0
-    }
+    },
+		"image": "  (I)  (\/)(I)(\\)\r\n     (I)     (-)"	
   },
   "2": {
     "name": "Texocotl",
@@ -21,7 +22,8 @@
       "speed": 2,
       "courage": 0,
       "luck": 0
-    }
+    },
+		"image": "_ \/_\r\n( `' )\r\n `~~'"
   },
   "3": {
     "name": "Blood Feather",
@@ -33,7 +35,8 @@
       "speed": 0,
       "courage": 0,
       "luck": 0
-    }
+    },
+    "image":"      (`\/*\r\n      `= \/\\\r\n       `=\\>\\\r\n        `=\\\/"
   },
 
   "4": {
@@ -46,7 +49,8 @@
       "speed": 5,
       "courage": 0,
       "luck": 0
-    }
+    },
+    "image":"      (`\/*\r\n      `= \/\\\r\n       `=\\>\\\r\n        `=\\\/"
   },
   "5": {
     "name": "Sun Feather",
@@ -58,7 +62,8 @@
       "speed": 0,
       "courage": 0,
       "luck": 5
-    }
+    },
+    "image":"      (`\/*\r\n      `= \/\\\r\n       `=\\>\\\r\n        `=\\\/"
   },
   "6": {
     "name": "Lebron James Jersey",
@@ -70,13 +75,15 @@
       "speed": 3,
       "courage": 3,
       "luck": 3
-    }
+    },
+		"image": "   __   __\r\n \/|  `-\u00B4  |\\\r\n\/_|  Leb  |_\\\r\n  | James |\r\n  |  ovo  |\r\n  |_______|"
   },
   "7": {
     "name": "Old Half Sharpened Rock",
     "type": "Weapon",
     "cost": "0",
     "dmg": 10
+    "image": "<=)"
   },
   "8": {
     "name": "Coffee Beans",
@@ -88,7 +95,8 @@
       "speed": 0,
       "courage": 2,
       "luck": 0
-    }
+    },
+		"image": "  (I)  (\/)(I)(\\)\r\n    (I)     (-)"	
   },
   "9": {
     "name": "Mystic Powder",
@@ -100,6 +108,7 @@
       "speed": 5,
       "courage": 2,
       "luck": 0
-    }
+    },
+    "image":" _ \/_\r\n( `' )\r\n `~~'"
   }
 }
