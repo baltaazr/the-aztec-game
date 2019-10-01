@@ -25,6 +25,8 @@ namespace the_aztec_game
 
         public double maxhp { get; set; }
 
+        public bool encounteredGod { get; set; }
+
         public Player(string playerName, string playerOccupation)
         {
             name = playerName;
@@ -36,9 +38,10 @@ namespace the_aztec_game
             stats["speed"] = 5;
             stats["courage"] = 0;
             stats["luck"] = 40;
-            equippedArmor = new Armor("T-shirt", 0, new Dictionary<string, double>() { { "hp", 0.0 }, { "dmgmod", 0.0 }, { "speed", 0.0 }, { "courage", 0.0 }, { "luck", 0.0 } });
+            equippedArmor = new Armor("T-shirt", 0, new Dictionary<string, double>() { { "hp", 0.0 }, { "dmgmod", 0.0 }, { "speed", 0.0 }, { "courage", 0.0 }, { "luck", 0.0 } }, "");
             inventory = new List<Item>();
             maxhp = 40;
+            encounteredGod = false;
         }
 
         public string getStringStats()

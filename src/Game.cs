@@ -72,11 +72,11 @@ How many character points would you like to spend on speed?: ");
                 player.stats["speed"] += cps;
 
                 typewriterStyleOutput(@"
-Every character point added to courage increase the chance of dealing crits by 1%. 
+Every character point added to courage increase the chance of dealing crits by 0.1%. 
 How many character points would you like to spend on courage?: ");
                 int cpc = waitForInt();
                 characterPoints -= cpc;
-                player.stats["courage"] += cpc;
+                player.stats["courage"] += cpc * 0.1;
 
                 typewriterStyleOutput(@"
 Every character point added to luck increases the chance of meeting a weaker enemy by 0.5%.
@@ -376,6 +376,12 @@ suddenly gain the urge to laugh along with the voice. You gained two points to C
 Current Courage stats: {0}", player.stats["courage"]), "stats");
                 }
             }
+            else
+            {
+                // TESTING OPTIONS FOR TEMPLE
+                player.stats["speed"] = 100;
+                player.stats["dmgmod"] = 5;
+            }
 
 
             typewriterStyleOutput(Configs.INSTRUCTIONS);
@@ -384,7 +390,7 @@ Current Courage stats: {0}", player.stats["courage"]), "stats");
             // <d> to get a description of the room and <l> to look around the room.
 
             player.currentRoom = templeMap[1];
-            while (player.currentRoom.index != 16)
+            while (player.currentRoom.index != 15)
             {
                 string templeInput = waitForInput(new string[] { "n", "s", "e", "w", "i", "st", "d", "l", "help" }, true);
                 switch (templeInput)
@@ -412,7 +418,8 @@ or <e> to exit the inventory menu.
                             typewriterStyleOutput(string.Format(@"
                         
 {0}: {1}
-", itemSelected.name, itemSelected.getStringStats()));
+{2}
+", itemSelected.name, itemSelected.getStringStats(), itemSelected.image));
                             if (itemSelected is Armor)
                             {
                                 typewriterStyleOutput(@"
@@ -753,7 +760,7 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
                 if (player.currentRoom.index == 15)
                 {
                     // FIGHT BOSS
-                    combat(enemies[0]);
+                    combat(enemies[0], true);
                     return;
                 }
 
@@ -803,8 +810,8 @@ Thanks for playing. Game created by Baltazar Zuniga, Daniel Ku, Julian Blackthor
             {3}. {0} 
                Cost {1} pesos
                {2}
-
-", item.name, item.cost, item.getStringStats(), index));
+{4}
+", item.name, item.cost, item.getStringStats(), index, item.image));
                 index++;
             }
         }
@@ -902,11 +909,11 @@ Anything else? <Yes / No>
                 if (item.name.Equals(itemName))
                     return item;
 
-            return new Weapon("error", 0, 0);
+            return new Weapon("error", 0, 0, "");
         }
 
 
-        private void combat(Enemy enemy)
+        private void combat(Enemy enemy, bool boss = false)
         {
             typewriterStyleOutput(string.Format(@"
 
@@ -924,18 +931,17 @@ Because of your speed, you're able to deal the first move.
 ");
                 if (playerCombatTurn(ref enemy))
                 {
-                    typewriterStyleOutput(@"
+                    if (boss)
+                    {
+                        typewriterStyleOutput(@"
 
-Because of your speed, you're able to escape successfully.
+Despite Xolotl's immense size, you're able to escape to the adjacent room.
+Maybe try further exploring the temple to find better equipment to defeat this foe.
 ");
-                    return;
-                }
-            } while (player.stats["hp"] > 0 && enemy.stats["hp"] > 0)
-            {
-                enemyCombatTurn(ref enemy);
-                if (player.stats["hp"] > 0)
-                {
-                    if (playerCombatTurn(ref enemy))
+                        player.currentRoom = player.currentRoom.e;
+                        return;
+                    }
+                    else
                     {
                         typewriterStyleOutput(@"
 
@@ -943,6 +949,58 @@ Because of your speed, you're able to escape successfully.
 ");
                         return;
                     }
+
+                }
+            } while ((player.stats["hp"] > 0 || boss) && enemy.stats["hp"] > 0)
+            {
+                enemyCombatTurn(ref enemy);
+                if (player.stats["hp"] > 0)
+                {
+                    if (playerCombatTurn(ref enemy))
+                    {
+                        if (boss)
+                        {
+                            typewriterStyleOutput(@"
+
+Despite Xolotl's immense size, you're able to escape to the adjacent room.
+Maybe try further exploring the temple to find better equipment to defeat this foe.
+");
+                            player.currentRoom = player.currentRoom.e;
+                            return;
+                        }
+                        else
+                        {
+                            typewriterStyleOutput(@"
+
+Because of your speed, you're able to escape successfully.
+");
+                            return;
+                        }
+                    }
+                }
+                else if (boss)
+                {
+                    if (!player.encounteredGod)
+                    {
+                        typewriterStyleOutput(@"
+You start feeling unconscious as if you're about to die, but suddenly, from the corner of your eye,
+a weird looking creature appears. He says with a majestic voice:
+""I am the god of warfare, Huitzilopochtli. I've seen your valiant struggle through this temple,
+and I have decided to give you another chance in this heroic fight.""
+All of a sudden the figure leaves your eyesight and you regain the strength to continue fighting.");
+                        player.encounteredGod = true;
+                    }
+                    else
+                    {
+                        typewriterStyleOutput(@"
+You once again start feeling unconscious as if you're about to die, and once again, from the corner 
+of your eye, Huitzilopochtli comes in to save the day. He says with his majestic voice:
+""This isn't the first time you've fallen in this great fight. I understand he's a tough opponent,
+but you're going to have to deal some heavy hits if you want to win this battle.""
+All of a sudden Huitzilopochtli leaves your eyesight and you regain the strength to continue fighting.");
+                    }
+
+                    player.stats["hp"] = player.maxhp;
                 }
             }
             if (player.stats["hp"] <= 0)

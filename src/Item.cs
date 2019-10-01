@@ -5,10 +5,13 @@ namespace the_aztec_game
     {
         public string name { get; set; }
         public int cost { get; set; }
-        public Item(string itemName, int itemCost)
+
+        public string image { get; set; }
+        public Item(string itemName, int itemCost, string itemImage)
         {
             name = itemName;
             cost = itemCost;
+            image = itemImage;
         }
 
         public abstract double getRandDmg();

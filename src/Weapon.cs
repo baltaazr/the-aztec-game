@@ -3,30 +3,30 @@ using System.Collections.Generic;
 
 namespace the_aztec_game
 {
-  class Weapon : Item
-  {
-    public double dmg { get; set; }
-
-    public Weapon(string name, int cost, double weaponDmg) : base(name, cost)
+    class Weapon : Item
     {
-      dmg = weaponDmg;
-    }
+        public double dmg { get; set; }
 
-    override public double getRandDmg()
-    {
-      Random r = new Random();
-      double fix = Math.Pow(10, Configs.DAMAGE_PRECISION);
+        public Weapon(string name, int cost, double weaponDmg, string image) : base(name, cost, image)
+        {
+            dmg = weaponDmg;
+        }
 
-      return Math.Round((r.NextDouble() + 0.5) * dmg * fix) / fix;
-    }
+        override public double getRandDmg()
+        {
+            Random r = new Random();
+            double fix = Math.Pow(10, Configs.DAMAGE_PRECISION);
 
-    override public string getStringStats()
-    {
-      return string.Format(@"This weapon does {0} damage.", dmg);
+            return Math.Round((r.NextDouble() + 0.5) * dmg * fix) / fix;
+        }
+
+        override public string getStringStats()
+        {
+            return string.Format(@"This weapon does {0} damage.", dmg);
+        }
+        override public Dictionary<string, double> getPerks()
+        {
+            return new Dictionary<string, double>();
+        }
     }
-    override public Dictionary<string, double> getPerks()
-    {
-      return new Dictionary<string, double>();
-    }
-  }
 }

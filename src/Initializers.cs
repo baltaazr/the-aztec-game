@@ -91,17 +91,17 @@ namespace the_aztec_game
                     switch (itemClass)
                     {
                         case "Weapon":
-                            Weapon weapon = new Weapon(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), Convert.ToDouble(Int32.Parse(itemValue.dmg.ToString())));
+                            Weapon weapon = new Weapon(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), Convert.ToDouble(Int32.Parse(itemValue.dmg.ToString())), itemValue.image.ToString());
                             items.Add(weapon);
                             break;
                         case "Armor":
                             Dictionary<string, double> armorPerks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
-                            Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), armorPerks);
+                            Armor armor = new Armor(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), armorPerks, itemValue.image.ToString());
                             items.Add(armor);
                             break;
                         case "Consumable":
                             Dictionary<string, double> consumablePerks = JsonConvert.DeserializeObject<Dictionary<string, double>>(itemValue.perks.ToString());
-                            Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), consumablePerks);
+                            Consumable consumable = new Consumable(itemValue.name.ToString(), Int32.Parse(itemValue.cost.ToString()), consumablePerks, itemValue.image.ToString());
                             items.Add(consumable);
                             break;
                         default:
